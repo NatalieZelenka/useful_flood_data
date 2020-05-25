@@ -53,13 +53,15 @@ m = folium.Map(
     max_lat=lat_max,
     min_lon=long_min,
     max_lon=long_max,
-    min_zoom=5,
 )
 
 m.fit_bounds(bounds=[sw, ne])  # creates the ideal initial zoom level
 
 for map_name in base_maps:
-    folium.TileLayer(base_maps[map_name][0], name=map_name, attr=base_maps[map_name][1]).add_to(m)
+    folium.TileLayer(base_maps[map_name][0],
+                     name=map_name,
+                     attr=base_maps[map_name][1],
+                     min_zoom=5).add_to(m)
 
 # ------------
 # LOAD IN DATA
@@ -92,14 +94,12 @@ for index, row in data_dict_df.iterrows():
                 lon = gp_row.geometry.centroid.x
             # name = gp_row.name_en
             icon_url = os.path.join(website, row.icon)
-            icon = folium.features.CustomIcon(icon_url, icon_size=(14, 14))
+            icon = folium.features.CustomIcon(icon_url)
             marker = folium.Marker(
                 [lat, lon],
                 icon=icon,
-                # popup=name,  # TODO: Ask Laurence about popups.
-                # tooltip='Test',
-                icon_size=[20, 20],
-            )  # TODO: Ask about icon size - doesn't seem to work.
+                icon_size=[32, 32],  # TODO: Ask about preferred icon size.
+            )
             m.add_child(marker)
 
 folium.LayerControl().add_to(m)
