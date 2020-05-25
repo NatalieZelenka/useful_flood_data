@@ -98,3 +98,4 @@ default_base_map = base_maps['OSM Humanitarian']
 # OUTPUT
 # ------
 m.save(os.path.join(out_dir, 'index.md'))
+m.save(os.path.join(out_dir, 'index.html'))
