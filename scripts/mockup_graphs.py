@@ -8,7 +8,6 @@ import folium  # for creating the interactive map
 import numpy as np
 import pandas as pd
 import os
-import shutil
 import sys
 
 # ---------
@@ -88,7 +87,7 @@ for index, row in data_dict_df.iterrows():
             if gp_row.geometry.type == 'Point':
                 lat = gp_row.geometry.y
                 lon = gp_row.geometry.x
-            elif gp_row.geometry.type == 'MultiPolygon':  # TODO: Could draw polygon with marker
+            elif gp_row.geometry.type == 'MultiPolygon':  # TODO: Could draw polygon with marker, ask Laurence
                 lat = gp_row.geometry.centroid.y
                 lon = gp_row.geometry.centroid.x
             # name = gp_row.name_en
@@ -99,18 +98,14 @@ for index, row in data_dict_df.iterrows():
                 icon=icon,
                 # popup=name,  # TODO: Ask Laurence about popups.
                 # tooltip='Test',
-            #    icon_size=(, 1000),
+                icon_size=[20, 20],
             )  # TODO: Ask about icon size - doesn't seem to work.
             m.add_child(marker)
 
-        # points = folium.features.GeoJson(geo_json)
-        # m.add_child(points)
 folium.LayerControl().add_to(m)
 
 # -------
 # OUTPUT
 # ------
 html_file = os.path.join(out_dir, 'index.html')
-md_file = os.path.join(out_dir, 'index.md')
 m.save(html_file)
-shutil.copy(html_file, md_file)
