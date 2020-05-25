@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_93f95519dead4b89a1aefab2e7e7b2b0 {
+                #map_8736bf7b293340589af52b20bc398462 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,13 +35,13 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_93f95519dead4b89a1aefab2e7e7b2b0" ></div>
+            <div class="folium-map" id="map_8736bf7b293340589af52b20bc398462" ></div>
         
 </body>
 <script>    
     
-            var map_93f95519dead4b89a1aefab2e7e7b2b0 = L.map(
-                "map_93f95519dead4b89a1aefab2e7e7b2b0",
+            var map_8736bf7b293340589af52b20bc398462 = L.map(
+                "map_8736bf7b293340589af52b20bc398462",
                 {
                     center: [-16.75, 36.5],
                     crs: L.CRS.EPSG3857,
@@ -56,735 +56,735 @@
 
         
     
-            var tile_layer_ffd5b8ada18546049f134eda4a5f38d3 = L.tileLayer(
+            var tile_layer_e838757feee1445db59bb349d734a809 = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 5, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-            map_93f95519dead4b89a1aefab2e7e7b2b0.fitBounds(
+            map_8736bf7b293340589af52b20bc398462.fitBounds(
                 [[-25.0, 30.0], [-8.5, 43.0]],
                 {}
             );
         
     
-            var marker_07cfe643efbd411888a6c062df0871d6 = L.marker(
+            var marker_611dbd3a6c464312a48f2a8a1a61857d = L.marker(
                 [-16.8536831, 36.966587],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_b69616da14cb49a9b26e74aeebc421c0 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_07cfe643efbd411888a6c062df0871d6.setIcon(custom_icon_b69616da14cb49a9b26e74aeebc421c0);
+        var custom_icon_265577c619b644f6a2d6c03e2faf98b1 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_611dbd3a6c464312a48f2a8a1a61857d.setIcon(custom_icon_265577c619b644f6a2d6c03e2faf98b1);
         
     
-            var marker_bc6b1df2c8864637bcf01c813141b8bf = L.marker(
+            var marker_764d554a131f4f20b5aa0fa632b7e6de = L.marker(
                 [-13.2721452, 35.2640604],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_ec62b95092504c80a64898334ecacdcc = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_bc6b1df2c8864637bcf01c813141b8bf.setIcon(custom_icon_ec62b95092504c80a64898334ecacdcc);
+        var custom_icon_bef8d714765141558fb5d420eb6451b6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_764d554a131f4f20b5aa0fa632b7e6de.setIcon(custom_icon_bef8d714765141558fb5d420eb6451b6);
         
     
-            var marker_4eff4ae698154023a9f7956611fbd66a = L.marker(
+            var marker_c1f8cfcea5fe4cb5b2c110554bc6cf52 = L.marker(
                 [-21.5362894, 35.4731954],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_416ba3bb3f65440cb56d3dc122fef448 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_4eff4ae698154023a9f7956611fbd66a.setIcon(custom_icon_416ba3bb3f65440cb56d3dc122fef448);
+        var custom_icon_7927003f8cde4f1fac498435365d7a4f = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_c1f8cfcea5fe4cb5b2c110554bc6cf52.setIcon(custom_icon_7927003f8cde4f1fac498435365d7a4f);
         
     
-            var marker_6e392459791f4ac3ae62ab81048c04f2 = L.marker(
+            var marker_0e230399ecea45e5a9e31b752a717a7e = L.marker(
                 [-21.1625508, 34.5610696],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_c635d8961c2e49f081afb35d497386d2 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_6e392459791f4ac3ae62ab81048c04f2.setIcon(custom_icon_c635d8961c2e49f081afb35d497386d2);
+        var custom_icon_7fe7f96d1dd042cdb04d1d44d06127fc = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_0e230399ecea45e5a9e31b752a717a7e.setIcon(custom_icon_7fe7f96d1dd042cdb04d1d44d06127fc);
         
     
-            var marker_216fd15af0d94035972330fd27c38c11 = L.marker(
+            var marker_03e4ab9df4b54b389a6d08df6362102f = L.marker(
                 [-25.2659855, 33.2385979],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_16e9df28f5604b0c82cf6b13cf5f28ba = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_216fd15af0d94035972330fd27c38c11.setIcon(custom_icon_16e9df28f5604b0c82cf6b13cf5f28ba);
+        var custom_icon_9be100e075b44590892667efe93d855d = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_03e4ab9df4b54b389a6d08df6362102f.setIcon(custom_icon_9be100e075b44590892667efe93d855d);
         
     
-            var marker_94483e07cac843e5b0878a12bb4c6adf = L.marker(
+            var marker_d9e705a111b84c08876ab4b81997c7a4 = L.marker(
                 [-14.8159887, 36.5316201],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_50415c3ab4be48ac8f55895c2e117eaa = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_94483e07cac843e5b0878a12bb4c6adf.setIcon(custom_icon_50415c3ab4be48ac8f55895c2e117eaa);
+        var custom_icon_611f4b55b62c4f4f857c47c87bad61dd = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_d9e705a111b84c08876ab4b81997c7a4.setIcon(custom_icon_611f4b55b62c4f4f857c47c87bad61dd);
         
     
-            var marker_c5f0ad4e601444c3bd10cd24a32f171c = L.marker(
+            var marker_ec841b04ff0041f78d8d92640d0d7f65 = L.marker(
                 [-25.9971447, 32.9293518],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_01a2d683f39e48a0945700aaed405040 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_c5f0ad4e601444c3bd10cd24a32f171c.setIcon(custom_icon_01a2d683f39e48a0945700aaed405040);
+        var custom_icon_875e7d34498c4558a6ed00edc8a73a0e = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_ec841b04ff0041f78d8d92640d0d7f65.setIcon(custom_icon_875e7d34498c4558a6ed00edc8a73a0e);
         
     
-            var marker_7689e35113c94d90b313d93879f6030b = L.marker(
+            var marker_21850e65cc3343ad8bfde5288c8be78f = L.marker(
                 [-11.6729002, 39.5630989],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_6e46419bd8504cab96171ce5673ad128 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_7689e35113c94d90b313d93879f6030b.setIcon(custom_icon_6e46419bd8504cab96171ce5673ad128);
+        var custom_icon_b48bcab424d04318a71c4f1e5bc7e42c = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_21850e65cc3343ad8bfde5288c8be78f.setIcon(custom_icon_b48bcab424d04318a71c4f1e5bc7e42c);
         
     
-            var marker_e5a97629a9d64d6f9a45484bbadf7f10 = L.marker(
+            var marker_abfe59249bca42c2baafbe9ac69e80bb = L.marker(
                 [-26.8285522, 32.8377075],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_28e52ef6a3724370b9b5528ea556acba = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_e5a97629a9d64d6f9a45484bbadf7f10.setIcon(custom_icon_28e52ef6a3724370b9b5528ea556acba);
+        var custom_icon_1dd825e5e99349bd9f8c279fec9b9a9a = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_abfe59249bca42c2baafbe9ac69e80bb.setIcon(custom_icon_1dd825e5e99349bd9f8c279fec9b9a9a);
         
     
-            var marker_1edb4ea48d644af8bdabb30338610c68 = L.marker(
+            var marker_db5c5927bb0c4703a6a39e18acb9491f = L.marker(
                 [-15.6027002, 32.773201],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_ea33bdb34562452dbe5b193d6f166ee0 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_1edb4ea48d644af8bdabb30338610c68.setIcon(custom_icon_ea33bdb34562452dbe5b193d6f166ee0);
+        var custom_icon_4733f37cbfb04c349b6680a9961a3357 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_db5c5927bb0c4703a6a39e18acb9491f.setIcon(custom_icon_4733f37cbfb04c349b6680a9961a3357);
         
     
-            var marker_9222084fc4b34c11bfff3270b0ab5a13 = L.marker(
+            var marker_48b2e58b94874832ac4420cbd7146bc2 = L.marker(
                 [-14.7054025, 34.353037],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_a0f3672d9c4340bf94b186ec56280f5c = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_9222084fc4b34c11bfff3270b0ab5a13.setIcon(custom_icon_a0f3672d9c4340bf94b186ec56280f5c);
+        var custom_icon_14cfd7a6f3b84febbd43eb22747cdd61 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_48b2e58b94874832ac4420cbd7146bc2.setIcon(custom_icon_14cfd7a6f3b84febbd43eb22747cdd61);
         
     
-            var marker_5e7f155c1bf14b9fb3e16e69e60d6b02 = L.marker(
+            var marker_9e3d2a3960fe41de97f1dc0150f25bef = L.marker(
                 [-25.0377998, 33.6273994],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_9d8f6903560c43ca91471472e23a999d = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_5e7f155c1bf14b9fb3e16e69e60d6b02.setIcon(custom_icon_9d8f6903560c43ca91471472e23a999d);
+        var custom_icon_85762d0d8d5e430a9a3184cfa91c2a5b = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_9e3d2a3960fe41de97f1dc0150f25bef.setIcon(custom_icon_85762d0d8d5e430a9a3184cfa91c2a5b);
         
     
-            var marker_7d1998a567c442a496250eb6cae44581 = L.marker(
+            var marker_242e9e6270074958b01079adb4ed7035 = L.marker(
                 [-21.7080002, 35.4528008],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_0adfee6e5db0471093e67aeb7259bce6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_7d1998a567c442a496250eb6cae44581.setIcon(custom_icon_0adfee6e5db0471093e67aeb7259bce6);
+        var custom_icon_614cd15dd6d044148064f5813ede3bb9 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_242e9e6270074958b01079adb4ed7035.setIcon(custom_icon_614cd15dd6d044148064f5813ede3bb9);
         
     
-            var marker_7b21ee50f6f54327b68dcf06f81b6d72 = L.marker(
+            var marker_453c9611c90841439ad459ca21359a8e = L.marker(
                 [-13.1218996, 39.0527992],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_d431dd79512d4017a3ac8c4b9b0f6237 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_7b21ee50f6f54327b68dcf06f81b6d72.setIcon(custom_icon_d431dd79512d4017a3ac8c4b9b0f6237);
+        var custom_icon_768c8b7c4493432d8e2f71a227c80441 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_453c9611c90841439ad459ca21359a8e.setIcon(custom_icon_768c8b7c4493432d8e2f71a227c80441);
         
     
-            var marker_b202f1a90f6e4aebbf4785e04b2ec6c1 = L.marker(
+            var marker_4dc56de7ed76482aaee5799e16ce095c = L.marker(
                 [-21.6149998, 35.3380013],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_f67f4c6ae45f4da3b3bec3a1aeedb12b = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_b202f1a90f6e4aebbf4785e04b2ec6c1.setIcon(custom_icon_f67f4c6ae45f4da3b3bec3a1aeedb12b);
+        var custom_icon_25048e31623e43879b88364eefad7273 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_4dc56de7ed76482aaee5799e16ce095c.setIcon(custom_icon_25048e31623e43879b88364eefad7273);
         
     
-            var marker_6655806a2cf4430c9677565dd243af1f = L.marker(
+            var marker_82cb745eb3d643fe9cc4242f8112f81b = L.marker(
                 [-19.7997428, 34.9176636],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_78a6a07b270147c99f1fa1859ab15f1e = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_6655806a2cf4430c9677565dd243af1f.setIcon(custom_icon_78a6a07b270147c99f1fa1859ab15f1e);
+        var custom_icon_48b91f1fb5074c4587a76ac8efe5a8b3 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_82cb745eb3d643fe9cc4242f8112f81b.setIcon(custom_icon_48b91f1fb5074c4587a76ac8efe5a8b3);
         
     
-            var marker_5c2de33851f44035ae95e37a514e6e21 = L.marker(
+            var marker_8e165e039c5b447fb7902bd9015278d4 = L.marker(
                 [-26.802856, 32.8835637],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_5406997b33924b68ae755f703b105a9b = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_5c2de33851f44035ae95e37a514e6e21.setIcon(custom_icon_5406997b33924b68ae755f703b105a9b);
+        var custom_icon_3a97932730f549ddbaf37f111aa2f81b = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_8e165e039c5b447fb7902bd9015278d4.setIcon(custom_icon_3a97932730f549ddbaf37f111aa2f81b);
         
     
-            var marker_67b9ff0972e1490dbddbbaf3512dd552 = L.marker(
+            var marker_9fa7fb0a1fe349e194f29f4d44a29184 = L.marker(
                 [-25.0319515, 32.7483858],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_dc43e0173a3b42e69d993854bec5f664 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_67b9ff0972e1490dbddbbaf3512dd552.setIcon(custom_icon_dc43e0173a3b42e69d993854bec5f664);
+        var custom_icon_69462e73a96d4790895f8f080bd468d1 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_9fa7fb0a1fe349e194f29f4d44a29184.setIcon(custom_icon_69462e73a96d4790895f8f080bd468d1);
         
     
-            var marker_5bf44b201ee7401fb1af32a80d2f7d23 = L.marker(
+            var marker_ff8a48381e2b4a06b46b190b982fe091 = L.marker(
                 [-22.8208754, 32.0042977],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_9b77a425a1fd42dcb4df2368e83a8e8d = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_5bf44b201ee7401fb1af32a80d2f7d23.setIcon(custom_icon_9b77a425a1fd42dcb4df2368e83a8e8d);
+        var custom_icon_e35ed48a78a64f4b95550955a82c8a2b = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_ff8a48381e2b4a06b46b190b982fe091.setIcon(custom_icon_e35ed48a78a64f4b95550955a82c8a2b);
         
     
-            var marker_38018cf5398d46ec89f7e476c9aa73a4 = L.marker(
+            var marker_f5c3aa7a5ea240bb92e6f498ffc82ac5 = L.marker(
                 [-21.5879383, 32.9292169],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_cc61a40d62da44dc8ab37d91c095a091 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_38018cf5398d46ec89f7e476c9aa73a4.setIcon(custom_icon_cc61a40d62da44dc8ab37d91c095a091);
+        var custom_icon_a5e1b39f31ba43ab840d80033dbc0d9e = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_f5c3aa7a5ea240bb92e6f498ffc82ac5.setIcon(custom_icon_a5e1b39f31ba43ab840d80033dbc0d9e);
         
     
-            var marker_3715e95b889348bebcae266613e5f0df = L.marker(
+            var marker_991e141ba4a445f7b47f59d9c1e18613 = L.marker(
                 [-25.2376204, 32.1598927],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_200603bdbec4476380127b68237a42ba = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_3715e95b889348bebcae266613e5f0df.setIcon(custom_icon_200603bdbec4476380127b68237a42ba);
+        var custom_icon_2f2620be011948de9473b6cc4a268ea6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_991e141ba4a445f7b47f59d9c1e18613.setIcon(custom_icon_2f2620be011948de9473b6cc4a268ea6);
         
     
-            var marker_919b5015e0ae4a8eba4619764ae29cd4 = L.marker(
+            var marker_a00b3563deac4cffb9b506e063851685 = L.marker(
                 [-25.1995933, 33.5011298],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_dec21d4b2fad434ba99f89977243c183 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_919b5015e0ae4a8eba4619764ae29cd4.setIcon(custom_icon_dec21d4b2fad434ba99f89977243c183);
+        var custom_icon_551839be80ed4792a09df865a0dfe728 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_a00b3563deac4cffb9b506e063851685.setIcon(custom_icon_551839be80ed4792a09df865a0dfe728);
         
     
-            var marker_2210e4d9a36e444dbb82a03000efa1b6 = L.marker(
+            var marker_59fb6ff88a9f42e48e96f460aee9213e = L.marker(
                 [-21.7532037, 35.0598754],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_91cbeb2d8c2c44ad8aa9cee1291f7056 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_2210e4d9a36e444dbb82a03000efa1b6.setIcon(custom_icon_91cbeb2d8c2c44ad8aa9cee1291f7056);
+        var custom_icon_9d8cf0b7c0a448d59617dee98e3b940e = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_59fb6ff88a9f42e48e96f460aee9213e.setIcon(custom_icon_9d8cf0b7c0a448d59617dee98e3b940e);
         
     
-            var marker_217f6bfd4415447a8bcc818b7d249606 = L.marker(
+            var marker_177590ec6d014afaaa26d0f54df99353 = L.marker(
                 [-21.5264614, 35.4807876],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_265fa5330d8348e7937a7840c69ea4d9 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_217f6bfd4415447a8bcc818b7d249606.setIcon(custom_icon_265fa5330d8348e7937a7840c69ea4d9);
+        var custom_icon_bdd42fd348b04f64a72c89d074d0c602 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_177590ec6d014afaaa26d0f54df99353.setIcon(custom_icon_bdd42fd348b04f64a72c89d074d0c602);
         
     
-            var marker_bbba67ae348b4a699176652141195d0a = L.marker(
+            var marker_04ebb2073d354749af620f6b9edd7bc7 = L.marker(
                 [-12.2005615, 40.5689777],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_f4c837ba3e0f41debecaca9ce5eb6632 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_bbba67ae348b4a699176652141195d0a.setIcon(custom_icon_f4c837ba3e0f41debecaca9ce5eb6632);
+        var custom_icon_831a63520b81435faa5a0eed10f47160 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_04ebb2073d354749af620f6b9edd7bc7.setIcon(custom_icon_831a63520b81435faa5a0eed10f47160);
         
     
-            var marker_81385b470a6f489c87a396996464fd38 = L.marker(
+            var marker_2b9045f7958643da94330a094a39089f = L.marker(
                 [-17.8631466, 36.8702758],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_144f8943521244b59f678ee8b0cc81a9 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_81385b470a6f489c87a396996464fd38.setIcon(custom_icon_144f8943521244b59f678ee8b0cc81a9);
+        var custom_icon_6efb6736730d4279aeb4434acf863bb8 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_2b9045f7958643da94330a094a39089f.setIcon(custom_icon_6efb6736730d4279aeb4434acf863bb8);
         
     
-            var marker_63b72b3e197b4501bdc99bf8a2b6aa29 = L.marker(
+            var marker_0c4abbfc9b27434cba24d1b6e774d77d = L.marker(
                 [-23.9395556, 32.1538495],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_e94bcd4083e24967a153593e70813d12 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_63b72b3e197b4501bdc99bf8a2b6aa29.setIcon(custom_icon_e94bcd4083e24967a153593e70813d12);
+        var custom_icon_d78b6f33ae134127990c3d36817afa62 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_0c4abbfc9b27434cba24d1b6e774d77d.setIcon(custom_icon_d78b6f33ae134127990c3d36817afa62);
         
     
-            var marker_59969ae1aba241bdabec4a655d756fcf = L.marker(
+            var marker_ae11b4bca8c048a4b0ab53fd1d71c1fb = L.marker(
                 [-25.309864, 32.2587114],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_5091c32ac85245a6bb58726a01d049d9 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_59969ae1aba241bdabec4a655d756fcf.setIcon(custom_icon_5091c32ac85245a6bb58726a01d049d9);
+        var custom_icon_52f7e350948647a49777d70eea69beca = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_ae11b4bca8c048a4b0ab53fd1d71c1fb.setIcon(custom_icon_52f7e350948647a49777d70eea69beca);
         
     
-            var marker_bec350e951ed4261b1b4aac094ca2b8d = L.marker(
+            var marker_16382bba3c9442dfacfe3b19ae97d7d5 = L.marker(
                 [-26.0461341, 32.2776677],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_aaf3490456134d7fb46930218a5b37ff = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_bec350e951ed4261b1b4aac094ca2b8d.setIcon(custom_icon_aaf3490456134d7fb46930218a5b37ff);
+        var custom_icon_60aa034573274b10a1f024402035bc76 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_16382bba3c9442dfacfe3b19ae97d7d5.setIcon(custom_icon_60aa034573274b10a1f024402035bc76);
         
     
-            var marker_d40643690a3f461e8f8c8e79e90ec677 = L.marker(
+            var marker_8eede27f91a5415dbee9f078813dff3b = L.marker(
                 [-12.3501793, 40.6019581],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_324ea2f6c05241e284a2571d7f582dee = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_d40643690a3f461e8f8c8e79e90ec677.setIcon(custom_icon_324ea2f6c05241e284a2571d7f582dee);
+        var custom_icon_a1aa94967acf45cb9bbf299f41316bc5 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_8eede27f91a5415dbee9f078813dff3b.setIcon(custom_icon_a1aa94967acf45cb9bbf299f41316bc5);
         
     
-            var marker_db764af3bf944270ade36ca16ff23067 = L.marker(
+            var marker_f3a1476adc4d4739bde763a572842287 = L.marker(
                 [-14.2110529, 40.6967906],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_42679f4db4fc4f27a604052e7edab1e3 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_db764af3bf944270ade36ca16ff23067.setIcon(custom_icon_42679f4db4fc4f27a604052e7edab1e3);
+        var custom_icon_8e895239a4d949e09133c56de6c96f57 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_f3a1476adc4d4739bde763a572842287.setIcon(custom_icon_8e895239a4d949e09133c56de6c96f57);
         
     
-            var marker_74851a00caf3480a92619782eb07fd21 = L.marker(
+            var marker_e8585d45023a4b779a55c0fdc8a66f27 = L.marker(
                 [-13.4070995, 39.8028527],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_31ea18f53f2440fda3c4be93f184d4ee = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_74851a00caf3480a92619782eb07fd21.setIcon(custom_icon_31ea18f53f2440fda3c4be93f184d4ee);
+        var custom_icon_d27b869bbafc481f844e31475e2bf05c = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_e8585d45023a4b779a55c0fdc8a66f27.setIcon(custom_icon_d27b869bbafc481f844e31475e2bf05c);
         
     
-            var marker_03a2ba4ff4904055a48a6eda789294cf = L.marker(
+            var marker_689e784eb26341e7984168af287e144e = L.marker(
                 [-14.8790274, 40.0434146],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_71fd8f59a56e4602aa0dea08d2383b5f = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_03a2ba4ff4904055a48a6eda789294cf.setIcon(custom_icon_71fd8f59a56e4602aa0dea08d2383b5f);
+        var custom_icon_bfa0d3cb434a4570ac5e4e6b06b4be93 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_689e784eb26341e7984168af287e144e.setIcon(custom_icon_bfa0d3cb434a4570ac5e4e6b06b4be93);
         
     
-            var marker_af434e772bc54d19af403242f3908180 = L.marker(
+            var marker_b8d9c2830dd54f3db8af1cdab75efe8d = L.marker(
                 [-15.5040186, 36.98669],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_a09a5a06771b4bbcb8d9aac1d75b082e = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_af434e772bc54d19af403242f3908180.setIcon(custom_icon_a09a5a06771b4bbcb8d9aac1d75b082e);
+        var custom_icon_eb2f0789e2b14934b289a3f133f0ce35 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_b8d9c2830dd54f3db8af1cdab75efe8d.setIcon(custom_icon_eb2f0789e2b14934b289a3f133f0ce35);
         
     
-            var marker_84a8374fad894ea1875009cfa75fa14f = L.marker(
+            var marker_0519ad37b1eb49a383ec772375a896d4 = L.marker(
                 [-15.7363258, 32.762586],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_0a37ece56b1245fa9112ac35e22a679a = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_84a8374fad894ea1875009cfa75fa14f.setIcon(custom_icon_0a37ece56b1245fa9112ac35e22a679a);
+        var custom_icon_d1b2d596a15b4eba8d7869a1bbcb1226 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_0519ad37b1eb49a383ec772375a896d4.setIcon(custom_icon_d1b2d596a15b4eba8d7869a1bbcb1226);
         
     
-            var marker_62ca53d368784d1c9ce3192b89592aaa = L.marker(
+            var marker_ae73be65829c4d72a336967db6ffd17e = L.marker(
                 [-24.2247201, 35.4216259],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_79b24c04c1e74076b8317fe34469f33c = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_62ca53d368784d1c9ce3192b89592aaa.setIcon(custom_icon_79b24c04c1e74076b8317fe34469f33c);
+        var custom_icon_fd857779fd624b05939c1eb03868520a = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_ae73be65829c4d72a336967db6ffd17e.setIcon(custom_icon_fd857779fd624b05939c1eb03868520a);
         
     
-            var marker_76cf1841d6d246e0a0ffba2ad45db684 = L.marker(
+            var marker_82855d5281a741ae8af3fbf8253a2245 = L.marker(
                 [-11.3596821, 40.3538089],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_06bb89d583304c1d90fde5624b627ded = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_76cf1841d6d246e0a0ffba2ad45db684.setIcon(custom_icon_06bb89d583304c1d90fde5624b627ded);
+        var custom_icon_568a09e16ba5468d9df2b8be650d51ee = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_82855d5281a741ae8af3fbf8253a2245.setIcon(custom_icon_568a09e16ba5468d9df2b8be650d51ee);
         
     
-            var marker_a950b54f10f6494bbff0e88af9b0bd6e = L.marker(
+            var marker_ab300c601f5f4e51a6b327ef02c08d34 = L.marker(
                 [-10.7524932, 40.47087],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_2778c8c8b00e4fc091d72d3fbad38372 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_a950b54f10f6494bbff0e88af9b0bd6e.setIcon(custom_icon_2778c8c8b00e4fc091d72d3fbad38372);
+        var custom_icon_3869eb1d5913425681603b64e8ddf18f = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_ab300c601f5f4e51a6b327ef02c08d34.setIcon(custom_icon_3869eb1d5913425681603b64e8ddf18f);
         
     
-            var marker_72ca75b36ad54270a8c9532db0477638 = L.marker(
+            var marker_9904c4dcc11d4f5ea0d92aaa75ad4eb0 = L.marker(
                 [-11.9008621, 37.1886348],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_d3efec5d81834ad7816fed2d3589a794 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_72ca75b36ad54270a8c9532db0477638.setIcon(custom_icon_d3efec5d81834ad7816fed2d3589a794);
+        var custom_icon_05c0966aeeab419e9819b237468c3b3f = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_9904c4dcc11d4f5ea0d92aaa75ad4eb0.setIcon(custom_icon_05c0966aeeab419e9819b237468c3b3f);
         
     
-            var marker_0bae706b723f4da9a40b17396b50d84a = L.marker(
+            var marker_63a7891829304ac89c4b94d7e1ebfe07 = L.marker(
                 [-12.5498226, 36.2569637],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_7760d725b1f14f0dada94c8c1bddfa80 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_0bae706b723f4da9a40b17396b50d84a.setIcon(custom_icon_7760d725b1f14f0dada94c8c1bddfa80);
+        var custom_icon_4417ed9b27144344b221f0cdc2fe5df9 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_63a7891829304ac89c4b94d7e1ebfe07.setIcon(custom_icon_4417ed9b27144344b221f0cdc2fe5df9);
         
     
-            var marker_82e39547b742459686cae12e271a0287 = L.marker(
+            var marker_a053c2498da3497daa0a6d9a6e9a6c8b = L.marker(
                 [-11.6412688, 37.1481759],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_2fd41f3bdbbd43f296f6dfcd73197c4e = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_82e39547b742459686cae12e271a0287.setIcon(custom_icon_2fd41f3bdbbd43f296f6dfcd73197c4e);
+        var custom_icon_d5d78264905f4b29a52f18afe602cc51 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_a053c2498da3497daa0a6d9a6e9a6c8b.setIcon(custom_icon_d5d78264905f4b29a52f18afe602cc51);
         
     
-            var marker_c60312f5377b4b47b8498e21898e7c04 = L.marker(
+            var marker_80118c5fd5bc455ea185004c53d7abba = L.marker(
                 [-11.3401855, 38.3030171],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_cadb961bca2f4d0a9ce9ce5a594e453b = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_c60312f5377b4b47b8498e21898e7c04.setIcon(custom_icon_cadb961bca2f4d0a9ce9ce5a594e453b);
+        var custom_icon_f2f0d974a60340de877f2a75840f2a21 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_80118c5fd5bc455ea185004c53d7abba.setIcon(custom_icon_f2f0d974a60340de877f2a75840f2a21);
         
     
-            var marker_1db9fdd4155649efa352509b4176f014 = L.marker(
+            var marker_6c4f3ea93d074a2da9bbcb61628f0a2d = L.marker(
                 [-12.6018862, 36.5552365],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_c870f300649549b78b8bfa4d19f07ec1 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_1db9fdd4155649efa352509b4176f014.setIcon(custom_icon_c870f300649549b78b8bfa4d19f07ec1);
+        var custom_icon_510c303fed894522bba5dfeb3ffa60cf = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_6c4f3ea93d074a2da9bbcb61628f0a2d.setIcon(custom_icon_510c303fed894522bba5dfeb3ffa60cf);
         
     
-            var marker_ff50939a95dc42ffa81a0b0cf988f555 = L.marker(
+            var marker_1e2c17eb3c1d4f9ba748c95a2cef36c1 = L.marker(
                 [-12.4660624, 37.6600486],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_61e7518ab90e4f46bcfe173259a5d180 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_ff50939a95dc42ffa81a0b0cf988f555.setIcon(custom_icon_61e7518ab90e4f46bcfe173259a5d180);
+        var custom_icon_8e45357783bf45879126428ca9f7c65b = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_1e2c17eb3c1d4f9ba748c95a2cef36c1.setIcon(custom_icon_8e45357783bf45879126428ca9f7c65b);
         
     
-            var marker_ca61c4f6204042de85aa225f1156bfb2 = L.marker(
+            var marker_35a063d7f28b4fe0ac170c44e6d16561 = L.marker(
                 [-12.2424529, 38.0001527],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_da013a9ada614aa5bc9f642b54be708d = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_ca61c4f6204042de85aa225f1156bfb2.setIcon(custom_icon_da013a9ada614aa5bc9f642b54be708d);
+        var custom_icon_cf6d9120d8ac4d08bec79b9e631d1e4e = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_35a063d7f28b4fe0ac170c44e6d16561.setIcon(custom_icon_cf6d9120d8ac4d08bec79b9e631d1e4e);
         
     
-            var marker_432309dc6f104a2c98d15c6f80dbbe10 = L.marker(
+            var marker_46176b7c51a543f19a8ca7036ef27705 = L.marker(
                 [-12.1403522, 38.3189937],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_f957dc25b6c5437f9b484f07967a15fc = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_432309dc6f104a2c98d15c6f80dbbe10.setIcon(custom_icon_f957dc25b6c5437f9b484f07967a15fc);
+        var custom_icon_e3a108a5918842a0963ae1f0d96ac23b = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_46176b7c51a543f19a8ca7036ef27705.setIcon(custom_icon_e3a108a5918842a0963ae1f0d96ac23b);
         
     
-            var marker_c7ad7acdf1044b0794414fb95d9f6cc4 = L.marker(
+            var marker_c9369ba986084746bfe12f05aefcfb86 = L.marker(
                 [-12.1515121, 38.2838889],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_6fcfbd801f0e434694d7a87264cee14d = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_c7ad7acdf1044b0794414fb95d9f6cc4.setIcon(custom_icon_6fcfbd801f0e434694d7a87264cee14d);
+        var custom_icon_5673859f3ec84fb5b914f007bf755715 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_c9369ba986084746bfe12f05aefcfb86.setIcon(custom_icon_5673859f3ec84fb5b914f007bf755715);
         
     
-            var marker_e35e15cd9ead445799289f57e5c7f971 = L.marker(
+            var marker_82bc96d9d8d24b00acb1b854c79563d8 = L.marker(
                 [-12.1696793, 37.54613],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_60c0a57ac14b4b4b920d98fb76840db6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_e35e15cd9ead445799289f57e5c7f971.setIcon(custom_icon_60c0a57ac14b4b4b920d98fb76840db6);
+        var custom_icon_85b1e0c872a84e5d818e3fe976c43c66 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_82bc96d9d8d24b00acb1b854c79563d8.setIcon(custom_icon_85b1e0c872a84e5d818e3fe976c43c66);
         
     
-            var marker_c53882e732ba4991963b81c5d84c2fc9 = L.marker(
+            var marker_3870b7757aca4305ad787879365d24a4 = L.marker(
                 [-11.0729292, 39.6748264],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_1bbaab42eb36435899887da2bd26fc4d = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_c53882e732ba4991963b81c5d84c2fc9.setIcon(custom_icon_1bbaab42eb36435899887da2bd26fc4d);
+        var custom_icon_fd78eaab32394232ac5894c09f65a6c3 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_3870b7757aca4305ad787879365d24a4.setIcon(custom_icon_fd78eaab32394232ac5894c09f65a6c3);
         
     
-            var marker_4dd921ce3808435f96fb4445e77b3004 = L.marker(
+            var marker_21324669415e4ae9b8b0a9bd75956229 = L.marker(
                 [-17.8636198, 36.8703153],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_6e7c01f96d73456cadf8361dd7070f3d = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_4dd921ce3808435f96fb4445e77b3004.setIcon(custom_icon_6e7c01f96d73456cadf8361dd7070f3d);
+        var custom_icon_57179e8597c24fb0bea28e4350a20b3f = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_21324669415e4ae9b8b0a9bd75956229.setIcon(custom_icon_57179e8597c24fb0bea28e4350a20b3f);
         
     
-            var marker_55933b7466644cf5a5a9c7db8d8fd5c1 = L.marker(
+            var marker_aa6c6916225d44548b66e65821775824 = L.marker(
                 [-16.1134508, 33.6397552],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_99bd1c1b1bad42898c5220aa248bfd38 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_55933b7466644cf5a5a9c7db8d8fd5c1.setIcon(custom_icon_99bd1c1b1bad42898c5220aa248bfd38);
+        var custom_icon_75c711484d1a4499b506c560574cb5e2 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_aa6c6916225d44548b66e65821775824.setIcon(custom_icon_75c711484d1a4499b506c560574cb5e2);
         
     
-            var marker_d2bc0d96667e44acad02091a26337483 = L.marker(
+            var marker_d97d228ba27b4315a41e58868768b20b = L.marker(
                 [-16.113449, 33.6396726],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_0bd6bd81c7954b66bdb239e797d4e3de = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_d2bc0d96667e44acad02091a26337483.setIcon(custom_icon_0bd6bd81c7954b66bdb239e797d4e3de);
+        var custom_icon_5de9406539dd4e68a53f7e69bd33d6cb = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_d97d228ba27b4315a41e58868768b20b.setIcon(custom_icon_5de9406539dd4e68a53f7e69bd33d6cb);
         
     
-            var marker_9dc56eb3a2924663beeab1448c9bd740 = L.marker(
+            var marker_c686164797024c2ba6f8f12d1e1dc885 = L.marker(
                 [-16.1134473, 33.6395895],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_c9b906507e69498ab3d3b9962d98279e = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_9dc56eb3a2924663beeab1448c9bd740.setIcon(custom_icon_c9b906507e69498ab3d3b9962d98279e);
+        var custom_icon_1757d67d7fe5488eb95da4e5dcf7dd76 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_c686164797024c2ba6f8f12d1e1dc885.setIcon(custom_icon_1757d67d7fe5488eb95da4e5dcf7dd76);
         
     
-            var marker_3e8cd624fee04ab780eedb03db94106c = L.marker(
+            var marker_a162d6e8a13c4a2bba8ddf6786e93a41 = L.marker(
                 [-16.1134454, 33.639501],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_571a85120e404ad799413717a6df434b = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_3e8cd624fee04ab780eedb03db94106c.setIcon(custom_icon_571a85120e404ad799413717a6df434b);
+        var custom_icon_4f3ab56bc4ab4e12af3ca2d270648fc4 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_a162d6e8a13c4a2bba8ddf6786e93a41.setIcon(custom_icon_4f3ab56bc4ab4e12af3ca2d270648fc4);
         
     
-            var marker_ef4e4943621048f59e33d220a4d71b85 = L.marker(
+            var marker_b6a645c82643442aa68acca1c3b3f670 = L.marker(
                 [-16.1134424, 33.6393642],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_9b9ef25179f74254892473b9a53f6941 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_ef4e4943621048f59e33d220a4d71b85.setIcon(custom_icon_9b9ef25179f74254892473b9a53f6941);
+        var custom_icon_1763ba7d028e4cd29ac8e8c9b41cb802 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_b6a645c82643442aa68acca1c3b3f670.setIcon(custom_icon_1763ba7d028e4cd29ac8e8c9b41cb802);
         
     
-            var marker_3433d937ccea4f0380d9fdcd9a99c01e = L.marker(
+            var marker_bdfecfeeb11a4f2eaa83a787d5ed7cd7 = L.marker(
                 [-16.1254926, 33.6398068],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_c8f6f381209a42828e524d545ac485fa = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_3433d937ccea4f0380d9fdcd9a99c01e.setIcon(custom_icon_c8f6f381209a42828e524d545ac485fa);
+        var custom_icon_c6b216a50b0743279e41e396eb8d42c7 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_bdfecfeeb11a4f2eaa83a787d5ed7cd7.setIcon(custom_icon_c6b216a50b0743279e41e396eb8d42c7);
         
     
-            var marker_cf64cd43cba84f88816cd87f7082bc3a = L.marker(
+            var marker_9aa273f30fb74fd584ca406bb5800e26 = L.marker(
                 [-15.1999937, 35.8695997],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_fc696f9384e64c128bf7dd3e411f4033 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_cf64cd43cba84f88816cd87f7082bc3a.setIcon(custom_icon_fc696f9384e64c128bf7dd3e411f4033);
+        var custom_icon_825cc716372a4bf88c59dcaca5862332 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_9aa273f30fb74fd584ca406bb5800e26.setIcon(custom_icon_825cc716372a4bf88c59dcaca5862332);
         
     
-            var marker_1ab7024cb0ac41ea96b2a710ce7422f8 = L.marker(
+            var marker_90c54b4302254aed804660b5d11631f5 = L.marker(
                 [-12.7015132, 34.8043578],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_d835dc5f79434467bcee8eef4e61929a = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_1ab7024cb0ac41ea96b2a710ce7422f8.setIcon(custom_icon_d835dc5f79434467bcee8eef4e61929a);
+        var custom_icon_793f6e0a399d4773b9efcee9ae0d3f10 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_90c54b4302254aed804660b5d11631f5.setIcon(custom_icon_793f6e0a399d4773b9efcee9ae0d3f10);
         
     
-            var marker_b1e4d6e99e144e7e815ebfdb686bf078 = L.marker(
+            var marker_f559242ced1b4d1fba760e6e8842ccf4 = L.marker(
                 [-26.3936269, 32.6508692],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_053784b76cc444c0b929a11e8255cb5e = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_b1e4d6e99e144e7e815ebfdb686bf078.setIcon(custom_icon_053784b76cc444c0b929a11e8255cb5e);
+        var custom_icon_cf01c32ec15547c58dea127e4dc12a11 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_f559242ced1b4d1fba760e6e8842ccf4.setIcon(custom_icon_cf01c32ec15547c58dea127e4dc12a11);
         
     
-            var marker_623f17593f1242fdbd24588d6378f593 = L.marker(
+            var marker_fb2bb68c0cca4e20bbbcb2cc32935d67 = L.marker(
                 [-19.8933436, 34.5856456],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_46ebcf62436f4dd5bab4d7fcfa69d6e6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_623f17593f1242fdbd24588d6378f593.setIcon(custom_icon_46ebcf62436f4dd5bab4d7fcfa69d6e6);
+        var custom_icon_7eb2e5ffb4e7402f8f4bda144c229156 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_fb2bb68c0cca4e20bbbcb2cc32935d67.setIcon(custom_icon_7eb2e5ffb4e7402f8f4bda144c229156);
         
     
-            var marker_5bace2940cd54f38abd207ee278a0c83 = L.marker(
+            var marker_059f0765d8ac4831be9f38e4e645deb8 = L.marker(
                 [-19.7952029, 34.896896],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_93269cbfef774ef2a3d64ce71905826b = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_5bace2940cd54f38abd207ee278a0c83.setIcon(custom_icon_93269cbfef774ef2a3d64ce71905826b);
+        var custom_icon_111cb8bea73146b9b612ec3bf5fd899f = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_059f0765d8ac4831be9f38e4e645deb8.setIcon(custom_icon_111cb8bea73146b9b612ec3bf5fd899f);
         
     
-            var marker_9efbb83f9316457aba6f1200d174c14c = L.marker(
+            var marker_278f46de1fa648d5b4992a6d314c7f30 = L.marker(
                 [-19.7999018, 34.9182957],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_5905407fc55b4939a263e5b3f84d9544 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_9efbb83f9316457aba6f1200d174c14c.setIcon(custom_icon_5905407fc55b4939a263e5b3f84d9544);
+        var custom_icon_e71ea2f1fdbf4364bccd101bf25ef2bf = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_278f46de1fa648d5b4992a6d314c7f30.setIcon(custom_icon_e71ea2f1fdbf4364bccd101bf25ef2bf);
         
     
-            var marker_79e81a5a03584738b65d43d5d489e3e7 = L.marker(
+            var marker_5969170d81764c729c558334171c8baf = L.marker(
                 [-19.7935243, 34.8993105],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_f938c5d88adf43d388dfa6f091338940 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_79e81a5a03584738b65d43d5d489e3e7.setIcon(custom_icon_f938c5d88adf43d388dfa6f091338940);
+        var custom_icon_d487f301e8654abcbe286708f952d8b0 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_5969170d81764c729c558334171c8baf.setIcon(custom_icon_d487f301e8654abcbe286708f952d8b0);
         
     
-            var marker_c0cc65afb239435fac4cd0c4743111df = L.marker(
+            var marker_1a3e14a9de264dbc9e02e0359f080c03 = L.marker(
                 [-19.7976317, 34.9061903],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_666c12f4c3ac4f97a2f59ed7125c3de4 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_c0cc65afb239435fac4cd0c4743111df.setIcon(custom_icon_666c12f4c3ac4f97a2f59ed7125c3de4);
+        var custom_icon_6a15cb2cf5674ab1ac5f28f2ecd4abe6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_1a3e14a9de264dbc9e02e0359f080c03.setIcon(custom_icon_6a15cb2cf5674ab1ac5f28f2ecd4abe6);
         
     
-            var marker_c2458b4d40674b2a8414241c283bac44 = L.marker(
+            var marker_0268fa2592b24aeabdc82ee56c70344c = L.marker(
                 [-19.7995068, 34.9155539],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_2d3b4171d3dc4ec09754e60da0136a9e = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_c2458b4d40674b2a8414241c283bac44.setIcon(custom_icon_2d3b4171d3dc4ec09754e60da0136a9e);
+        var custom_icon_567a4d62d9194371b542c765843e29e1 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_0268fa2592b24aeabdc82ee56c70344c.setIcon(custom_icon_567a4d62d9194371b542c765843e29e1);
         
     
-            var marker_1a3d35f248dc44108e9b8aa2f94e3cb0 = L.marker(
+            var marker_33e535e53531428984f1a5572cdd7510 = L.marker(
                 [-19.799879, 34.9214199],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_834eba07db8a465db505980fafeb55af = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_1a3d35f248dc44108e9b8aa2f94e3cb0.setIcon(custom_icon_834eba07db8a465db505980fafeb55af);
+        var custom_icon_92c59e4804284b75af6fbd6cf54178f4 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_33e535e53531428984f1a5572cdd7510.setIcon(custom_icon_92c59e4804284b75af6fbd6cf54178f4);
         
     
-            var marker_8a575725864b43c5b77de9e947ad23f7 = L.marker(
+            var marker_b4291da2957c4429badd2ef82a16612f = L.marker(
                 [-19.796438, 34.9045864],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_96c981fea7544df8b0fbfe2b97d4831c = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_8a575725864b43c5b77de9e947ad23f7.setIcon(custom_icon_96c981fea7544df8b0fbfe2b97d4831c);
+        var custom_icon_5aa86d5ed9b846bb83f107f6ead52a1b = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_b4291da2957c4429badd2ef82a16612f.setIcon(custom_icon_5aa86d5ed9b846bb83f107f6ead52a1b);
         
     
-            var marker_364ed820181e442fa320fb5784da4db3 = L.marker(
+            var marker_70015b85ca1f41b68208db9a9736da12 = L.marker(
                 [-17.8501549, 36.8689343],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_c410853aa9d9479299d49287aee529e0 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_364ed820181e442fa320fb5784da4db3.setIcon(custom_icon_c410853aa9d9479299d49287aee529e0);
+        var custom_icon_2778c2c61b2a40f2b7d451496b22fd01 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_70015b85ca1f41b68208db9a9736da12.setIcon(custom_icon_2778c2c61b2a40f2b7d451496b22fd01);
         
     
-            var marker_3fa5ffa790724055a2fd089c33a39871 = L.marker(
+            var marker_a7eca8ab4047456c9e1db925a4ec1d25 = L.marker(
                 [-17.8587714, 36.8698007],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_f5c81084ddf94253b58a530d8bc9dc23 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_3fa5ffa790724055a2fd089c33a39871.setIcon(custom_icon_f5c81084ddf94253b58a530d8bc9dc23);
+        var custom_icon_b35e06b77aa54e929493582b63e00b46 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_a7eca8ab4047456c9e1db925a4ec1d25.setIcon(custom_icon_b35e06b77aa54e929493582b63e00b46);
         
     
-            var marker_2a4e578fd8614feb927d295537dc94ed = L.marker(
+            var marker_dd4056ca63524d2e81c8664fbe0c8958 = L.marker(
                 [-19.1489727, 33.4278915],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_373ba7c9175f4c04b0a5c662d5e06904 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_2a4e578fd8614feb927d295537dc94ed.setIcon(custom_icon_373ba7c9175f4c04b0a5c662d5e06904);
+        var custom_icon_6745f5876443434086a846ceaacb2135 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_dd4056ca63524d2e81c8664fbe0c8958.setIcon(custom_icon_6745f5876443434086a846ceaacb2135);
         
     
-            var marker_452e77bb00344025a33f0aef38dbc5d6 = L.marker(
+            var marker_ebe0c330fa114ab5897cb0db3d382ee6 = L.marker(
                 [-19.1479985, 33.4282918],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_3186f351e2204c65a72ac5f93c22a322 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_452e77bb00344025a33f0aef38dbc5d6.setIcon(custom_icon_3186f351e2204c65a72ac5f93c22a322);
+        var custom_icon_759d6385083e4ddb87b44baab002a9a2 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_ebe0c330fa114ab5897cb0db3d382ee6.setIcon(custom_icon_759d6385083e4ddb87b44baab002a9a2);
         
     
-            var marker_746903599d054beb9631cc7f806384d4 = L.marker(
+            var marker_2cd7ae00bc53408fa2c146e70426d74d = L.marker(
                 [-19.1499533, 33.4281135],
                 {"iconSize": [14, 14]}
-            ).addTo(map_93f95519dead4b89a1aefab2e7e7b2b0);
+            ).addTo(map_8736bf7b293340589af52b20bc398462);
         
     
-        var custom_icon_4e9222a5eb044e77b62cbde46a203fc5 = L.icon({"iconSize": [14, 14], "iconUrl": "https://static.thenounproject.com/png/2009208-200.png"});
-        marker_746903599d054beb9631cc7f806384d4.setIcon(custom_icon_4e9222a5eb044e77b62cbde46a203fc5);
+        var custom_icon_656c5e7d11224aadad3f7f3fe9f9a3f6 = L.icon({"iconSize": [14, 14], "iconUrl": "https://nataliethurlby.github.io/useful_flood_data/icons/airport.svg"});
+        marker_2cd7ae00bc53408fa2c146e70426d74d.setIcon(custom_icon_656c5e7d11224aadad3f7f3fe9f9a3f6);
         
 </script>

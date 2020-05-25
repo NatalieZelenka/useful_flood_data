@@ -21,7 +21,7 @@ center = [np.mean([lat_min, lat_max]), np.mean([long_min, long_max])]
 
 out_dir = '../docs/'
 data_dict = '../data/data_dict_demo_map.csv'  # data dict file tells us which files to read in
-
+website = 'https://nataliethurlby.github.io/useful_flood_data/'
 
 # ----------
 # MAP SETUP
@@ -68,7 +68,8 @@ for index, row in data_dict_df.iterrows():
             lat = gp_row.geometry.y
             lon = gp_row.geometry.x
             name = gp_row.name_en
-            icon = folium.features.CustomIcon(row.icon2, icon_size=(14, 14))
+            icon_url = os.path.join(website, row.icon)
+            icon = folium.features.CustomIcon(icon_url, icon_size=(14, 14))
             marker = folium.Marker(
                 [lat, lon],
                 icon=icon,
