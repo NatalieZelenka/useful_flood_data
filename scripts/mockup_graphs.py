@@ -8,6 +8,7 @@ import folium  # for creating the interactive map
 import numpy as np
 import pandas as pd
 import os
+import shutil
 import sys
 
 # ---------
@@ -32,11 +33,11 @@ base_maps = {
         ('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
          '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>).'),
     'OSM Standard':
-        ('https://{s}.tile.openstreetmap.org/${z}/${x}/${y}.png', ' '),  # TODO: add attributions for basemaps
-    'Google Satellite':
-        ('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', ' '),  # TODO: add attributions for basemaps
+        ('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 'Data by &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'),
+    'ESRI Satellite':
+        ('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 'ESRI'),  # TODO: add attributions for basemaps
     'ESRI World Topo':
-        ('https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', ' '),  # TODO: add attributions for basemaps
+        ('https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', 'ESRI'),  # TODO: add attributions for basemaps
 }
 default_base_map = base_maps['OSM Humanitarian']
 
@@ -46,8 +47,7 @@ default_base_map = base_maps['OSM Humanitarian']
 
 m = folium.Map(
     location=center,
-    tiles=default_base_map[0],
-    attr=default_base_map[1],
+    tiles=None,
     max_bounds=True,
     # prevent map from zooming/panning out of the bounding box:
     min_lat=lat_min,
@@ -59,6 +59,8 @@ m = folium.Map(
 
 m.fit_bounds(bounds=[sw, ne])  # creates the ideal initial zoom level
 
+for map_name in base_maps:
+    folium.TileLayer(base_maps[map_name][0], name=map_name, attr=base_maps[map_name][1]).add_to(m)
 
 # ------------
 # LOAD IN DATA
@@ -98,14 +100,17 @@ for index, row in data_dict_df.iterrows():
                 # popup=name,  # TODO: Ask Laurence about popups.
                 # tooltip='Test',
             #    icon_size=(, 1000),
-            )  # TODO: Ask about icon size
+            )  # TODO: Ask about icon size - doesn't seem to work.
             m.add_child(marker)
 
         # points = folium.features.GeoJson(geo_json)
         # m.add_child(points)
+folium.LayerControl().add_to(m)
 
 # -------
 # OUTPUT
 # ------
-m.save(os.path.join(out_dir, 'index.md'))
-m.save(os.path.join(out_dir, 'index.html'))
+html_file = os.path.join(out_dir, 'index.html')
+md_file = os.path.join(out_dir, 'index.md')
+m.save(html_file)
+shutil.copy(html_file, md_file)
