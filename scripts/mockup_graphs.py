@@ -19,7 +19,7 @@ lat_min, long_min = sw
 lat_max, long_max = ne
 center = [np.mean([lat_min, lat_max]), np.mean([long_min, long_max])]
 
-out_dir = '../output/'
+out_dir = '../docs/'
 data_dict = '../data/data_dict_demo_map.csv'  # data dict file tells us which files to read in
 
 
@@ -29,13 +29,13 @@ data_dict = '../data/data_dict_demo_map.csv'  # data dict file tells us which fi
 
 m = folium.Map(
     location=center,
-    # max_bounds=True,
-    # # prevent map from zooming/panning out of the bounding box:
-    # min_lat=lat_min,
-    # max_lat=lat_max,
-    # min_lon=long_min,
-    # max_lon=long_max,
-    # min_zoom=5
+    max_bounds=True,
+    # prevent map from zooming/panning out of the bounding box:
+    min_lat=lat_min,
+    max_lat=lat_max,
+    min_lon=long_min,
+    max_lon=long_max,
+    min_zoom=5
 )
 
 m.fit_bounds(bounds=[sw, ne])  # creates the ideal initial zoom level
@@ -97,4 +97,4 @@ default_base_map = base_maps['OSM Humanitarian']
 # -------
 # OUTPUT
 # ------
-m.save(os.path.join(out_dir, 'map.html'))
+m.save(os.path.join(out_dir, 'index.md'))
