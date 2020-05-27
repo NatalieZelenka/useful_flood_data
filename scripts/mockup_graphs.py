@@ -44,6 +44,7 @@ def recolour_icon(old_icon_file, new_colour_hex, out_dir, new_subdir='recoloured
     :param old_color_hex:
     :return:
     """
+    # TODO: If there is no colour, add path fill = the new colour.
     old_icon_file = os.path.join(out_dir, old_icon_file)
     directory_path, file_name = os.path.split(old_icon_file)
     directory_path = os.path.join(directory_path, new_subdir)
@@ -221,7 +222,9 @@ data_dict_df = pd.read_csv(data_dict_file,
 marker_colours = {
     'Airports': '#34b1eb',
     'Health Facilities': '#34ebb4',
-    'City': '#000000',
+    'Cities': '#000000',
+    'Towns': '#000000',
+    'Villages': '#000000',
 }
 
 data_dict_df['marker_colour'] = data_dict_df.index.map(marker_colours)
@@ -267,7 +270,6 @@ for index, row in data_dict_df.iterrows():
             elif gp_row.geometry.type == 'MultiPolygon':  # TODO: Could draw polygon with marker, ask Laurence
                 lat = gp_row.geometry.centroid.y
                 lon = gp_row.geometry.centroid.x
-
             icon_url = os.path.join(website, row.new_icon)
             icon = folium.features.CustomIcon(icon_url, icon_size=[14,14])
             marker = folium.Marker(
