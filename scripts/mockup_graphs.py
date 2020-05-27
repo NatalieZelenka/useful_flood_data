@@ -30,7 +30,7 @@ def icon_colourmap(data_dict, out_dir, colour_col='marker_colour'):
         if not pd.isna(colour):
             icon_file = row.icon
             new_icon_file = recolour_icon(icon_file, colour, out_dir)
-            data_dict.new_icon[name] = new_icon_file
+            data_dict.loc[name, 'new_icon'] = new_icon_file
     return data_dict
 
 
@@ -221,11 +221,11 @@ data_dict_df = pd.read_csv(data_dict_file,
 marker_colours = {
     'Airports': '#34b1eb',
     'Health Facilities': '#34ebb4',
+    'City': '#000000',
 }
 
 data_dict_df['marker_colour'] = data_dict_df.index.map(marker_colours)
 data_dict_df = icon_colourmap(data_dict_df, out_dir)
-print(data_dict_df[['marker_colour', 'new_icon']])
 
 # ------------
 # LOAD IN DATA
@@ -248,7 +248,7 @@ for index, row in data_dict_df.iterrows():
             # img = display_tif(src_tif=file_path, dest_png = png_file, dest_crs=crs)
             continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
 
-    if row.info_type == 'marker':
+    elif row.info_type == 'marker':
         gp_df = gpd.read_file(file_path)
         if type(gp_df.crs).__name__ in ['CRS']:
             assert(str(gp_df.crs).upper() == crs)
@@ -278,6 +278,9 @@ for index, row in data_dict_df.iterrows():
             feature_group.add_child(marker)
 
         feature_group.add_to(m)
+    else:
+        gp_df = gpd.read_file(file_path)
+        print(index, gp_df)
 
 folium.LayerControl().add_to(m)
 
