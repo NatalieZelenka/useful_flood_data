@@ -17,13 +17,42 @@ from PIL import Image, ImageChops
 # FUNCTIONS
 # ---------
 
-def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs):
-    print(line_name, line_path)
-    gp_df = gpd.read_file(line_path, schema={'geometry': 'Point'})
+def set_crs(df, crs):
+    if type(df.crs).__name__ in ['CRS']:
+        if str(df.crs).upper() != crs:
+            df = df.to_crs(crs)
+    else:
+        df.crs = {'init': crs}
+    return df
 
-    if type(gp_df.crs).__name__ in ['CRS']:
-        if str(gp_df.crs).upper() != crs:
-            gp_df = gp_df.to_crs(crs)
+
+def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, map_obj, crs):
+    gp_df = gpd.read_file(polygon_path)
+    gp_df = set_crs(gp_df, crs)
+
+    feature_group = folium.FeatureGroup(
+        name=polygon_name,
+        show=False,
+    )
+
+    for i, gp_row in gp_df.iterrows():
+        if not type(gp_row.geometry).__name__ == 'MultiPolygon':
+            continue
+
+        for polygon_obj in gp_row.geometry:
+            coords = list(zip(polygon_obj.exterior.coords.xy[1], polygon_obj.exterior.coords.xy[0]))
+            polygon = folium.vector_layers.Polygon(coords, color=outline_colour, line_thickness=outline_thickness)
+
+        feature_group.add_child(polygon)
+
+    map_obj.add_child(feature_group)
+
+    return map_obj
+
+
+def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs):
+    gp_df = gpd.read_file(line_path)
+    gp_df = set_crs(gp_df, crs)
 
     feature_group = folium.FeatureGroup(
         name=line_name,
@@ -45,14 +74,8 @@ def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs):
 
 
 def add_markers(feature_group_name, marker_path, icon_url, map_obj, crs):
-
     gp_df = gpd.read_file(marker_path)
-
-    if type(gp_df.crs).__name__ in ['CRS']:
-        if str(gp_df.crs).upper() != crs:
-            gp_df = gp_df.to_crs(crs)
-    else:
-        gp_df.crs = {'init': crs}
+    gp_df = set_crs(gp_df, crs)
 
     try:
         assert (file_suffix in ['shp', 'gpkg'])
@@ -321,7 +344,6 @@ for index, row in data_dict_df.iterrows():
         m = add_markers(feature_group_name=index, marker_path=file_path, icon_url=row.new_icon, map_obj=m, crs=crs)
 
     elif row.info_type == 'line':
-
         m = add_line(line_name=index,
                      line_path=file_path,
                      line_colour=row.colour,
@@ -329,11 +351,15 @@ for index, row in data_dict_df.iterrows():
                      map_obj=m,
                      crs=crs)
 
+    elif row.info_type == 'polygon':
+        m = add_polygon(polygon_name=index,
+                        polygon_path=file_path,
+                        outline_colour=row.colour,
+                        outline_thickness=row.thickness,
+                        map_obj=m,
+                        crs=crs)
     else:
-        continue
-        # gp_df = gpd.read_file(file_path)
-        # gp_df = gp_df.to_crs(crs)
-        # print(index, gp_df)
+        print(f"Info type detected not known: {row.info_type}")  # TODO logging
 
 folium.LayerControl().add_to(m)
 
