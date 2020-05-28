@@ -17,6 +17,75 @@ from PIL import Image, ImageChops
 # FUNCTIONS
 # ---------
 
+def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs):
+    print(line_name, line_path)
+    gp_df = gpd.read_file(line_path, schema={'geometry': 'Point'})
+
+    if type(gp_df.crs).__name__ in ['CRS']:
+        if str(gp_df.crs).upper() != crs:
+            gp_df = gp_df.to_crs(crs)
+
+    feature_group = folium.FeatureGroup(
+        name=line_name,
+        show=False,
+    )
+
+    for _, gp_row in gp_df.iterrows():
+        if not type(gp_row.geometry).__name__ == 'LineString':
+            # TODO: deal with multiline strings
+            continue
+        coords = list(zip(gp_row.geometry.xy[1], gp_row.geometry.xy[0]))
+
+        line = folium.vector_layers.PolyLine(coords, color=line_colour, weight=line_thickness, opacity=1)
+        feature_group.add_child(line)
+
+    map_obj.add_child(feature_group)
+
+    return map_obj
+
+
+def add_markers(feature_group_name, marker_path, icon_url, map_obj, crs):
+
+    gp_df = gpd.read_file(marker_path)
+
+    if type(gp_df.crs).__name__ in ['CRS']:
+        if str(gp_df.crs).upper() != crs:
+            gp_df = gp_df.to_crs(crs)
+    else:
+        gp_df.crs = {'init': crs}
+
+    try:
+        assert (file_suffix in ['shp', 'gpkg'])
+    except AssertionError:
+        raise
+        # TODO: logging
+
+    feature_group = folium.FeatureGroup(
+        name=feature_group_name,
+        show=False,
+    )
+
+    icon_url = os.path.join(website, icon_url)
+    for _, gp_row in gp_df.iterrows():
+        if gp_row.geometry.type == 'Point':
+            lat = gp_row.geometry.y
+            lon = gp_row.geometry.x
+        elif gp_row.geometry.type == 'MultiPolygon':  # TODO: Could draw polygon with marker, ask Laurence
+            lat = gp_row.geometry.centroid.y
+            lon = gp_row.geometry.centroid.x
+        icon = folium.features.CustomIcon(icon_url, icon_size=[14, 14])
+        marker = folium.Marker(
+            [lat, lon],
+            icon=icon,
+            icon_size=[8, 8],  # TODO: Ask about preferred icon size? 20?
+        )
+        feature_group.add_child(marker)
+
+    feature_group.add_to(map_obj)
+
+    return map_obj
+
+
 def icon_colourmap(data_dict, out_dir, colour_col='marker_colour'):
     """
 
@@ -27,7 +96,7 @@ def icon_colourmap(data_dict, out_dir, colour_col='marker_colour'):
     data_dict['new_icon'] = pd.Series(index=data_dict.index, dtype=object)
     for name, row in data_dict.iterrows():
         colour = row[colour_col]
-        if not pd.isna(colour):
+        if not pd.isna(colour) and row.info_type == 'marker':
             icon_file = row.icon
             new_icon_file = recolour_icon(icon_file, colour, out_dir)
             data_dict.loc[name, 'new_icon'] = new_icon_file
@@ -85,6 +154,7 @@ def tif_to_geojson(tif_file):
             # Print GeoJSON shapes to stdout.
             return geom
 
+
 def png_to_tif(tif, dest_png):
 
         # tif files are crazy so they can have negative numbers and floats convert to 8 bit:
@@ -114,6 +184,7 @@ def png_to_tif(tif, dest_png):
 
         return None
 
+
 def display_tif(src_tif, dest_png, dest_crs):
 
     # TODO: Put into a function, where you can specify the colourmap/gradient.
@@ -122,7 +193,6 @@ def display_tif(src_tif, dest_png, dest_crs):
 
         if not os.path.exists(dest_png):
             png_to_tif(tif, dest_png)
-
 
     png_file = os.path.join(website, 'pngs', file_name.replace('.tif', '.png'))
     image_overlay = folium.raster_layers.ImageOverlay(
@@ -217,18 +287,18 @@ for map_name in base_maps.keys():
 data_dict_df = pd.read_csv(data_dict_file,
                            header=0,  # Row index 0 is the header row.
                            skiprows=[1],  # Row index 1 is the example row.
-                           index_col='data_name',)
+                           index_col='data_name',
+                           skip_blank_lines=True)
+data_dict_df = data_dict_df[data_dict_df.index.notnull()]
+data_dict_df = icon_colourmap(data_dict_df, out_dir, colour_col='colour')
 
-marker_colours = {
-    'Airports': '#34b1eb',
-    'Health Facilities': '#34ebb4',
-    'Cities': '#000000',
-    'Towns': '#000000',
-    'Villages': '#000000',
-}
 
-data_dict_df['marker_colour'] = data_dict_df.index.map(marker_colours)
-data_dict_df = icon_colourmap(data_dict_df, out_dir)
+# TODO: Try using ipywidgets to change marker colours with those in colour col being default.
+# marker_colours = {
+#     'Airports': '#34b1eb',
+# }
+# data_dict_df['marker_colour'] = data_dict_df.index.map(marker_colours)
+
 
 # ------------
 # LOAD IN DATA
@@ -237,52 +307,33 @@ data_dict_df = icon_colourmap(data_dict_df, out_dir)
 for index, row in data_dict_df.iterrows():
     file_path = row.file_path
     file_suffix = file_path.split('.')[-1]
-    if file_path[0] == 'D':
-        continue
-        # TODO: remove this line, it's just for convenience (which rows I haven't filled in on the data dict yet).
-
     file_path = os.path.join('../', file_path)
 
     if row.info_type == 'image_overlay':
-
-        if file_suffix == 'tif':
-            file_name = os.path.basename(file_path)
-            png_file = os.path.join(out_dir, 'pngs', file_name.replace('.tif', '.png'))
-            # img = display_tif(src_tif=file_path, dest_png = png_file, dest_crs=crs)
-            continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
+        continue
+        # if file_suffix == 'tif':
+        #     file_name = os.path.basename(file_path)
+        #     png_file = os.path.join(out_dir, 'pngs', file_name.replace('.tif', '.png'))
+        #     # img = display_tif(src_tif=file_path, dest_png = png_file, dest_crs=crs)
+        #     continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
 
     elif row.info_type == 'marker':
-        gp_df = gpd.read_file(file_path)
-        if type(gp_df.crs).__name__ in ['CRS']:
-            assert(str(gp_df.crs).upper() == crs)
-        # else:  # TODO: tidy
-        #     print(type(gp_df.crs).__name__)
-        assert(file_suffix in ['shp', 'gpkg'])
+        m = add_markers(feature_group_name=index, marker_path=file_path, icon_url=row.new_icon, map_obj=m, crs=crs)
 
-        feature_group = folium.FeatureGroup(
-            name=index,
-        )
+    elif row.info_type == 'line':
 
-        for _, gp_row in gp_df.iterrows():
-            if gp_row.geometry.type == 'Point':
-                lat = gp_row.geometry.y
-                lon = gp_row.geometry.x
-            elif gp_row.geometry.type == 'MultiPolygon':  # TODO: Could draw polygon with marker, ask Laurence
-                lat = gp_row.geometry.centroid.y
-                lon = gp_row.geometry.centroid.x
-            icon_url = os.path.join(website, row.new_icon)
-            icon = folium.features.CustomIcon(icon_url, icon_size=[14,14])
-            marker = folium.Marker(
-                [lat, lon],
-                icon=icon,
-                icon_size=[8, 8],  # TODO: Ask about preferred icon size? 20?
-            )
-            feature_group.add_child(marker)
+        m = add_line(line_name=index,
+                     line_path=file_path,
+                     line_colour=row.colour,
+                     line_thickness=row.thickness,
+                     map_obj=m,
+                     crs=crs)
 
-        feature_group.add_to(m)
     else:
-        gp_df = gpd.read_file(file_path)
-        print(index, gp_df)
+        continue
+        # gp_df = gpd.read_file(file_path)
+        # gp_df = gp_df.to_crs(crs)
+        # print(index, gp_df)
 
 folium.LayerControl().add_to(m)
 
