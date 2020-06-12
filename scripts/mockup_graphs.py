@@ -2,16 +2,23 @@
 # IMPORTS
 # -------
 import geopandas as gpd  # for loading/manipulating vector data
+from shapely.geometry import Point
+from shapely.geometry import Polygon
 import rasterio  # for loading/manipulating raster data
+
 
 import folium  # for creating the interactive map
 
 import numpy as np
 import pandas as pd
+import sys
 import os
 
 from PIL import Image, ImageChops
 
+import warnings
+
+warnings.filterwarnings('ignore', 'GeoSeries.notna', UserWarning)
 
 # ---------
 # FUNCTIONS
@@ -22,12 +29,14 @@ def set_crs(df, crs):
         if str(df.crs).upper() != crs:
             df = df.to_crs(crs)
     else:
-        df.crs = {'init': crs}
+        df.crs = crs
     return df
 
 
-def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, map_obj, crs):
+def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, map_obj, crs, bounding_box):
     gp_df = gpd.read_file(polygon_path)
+    gp_df = gpd.clip(gp_df, bounding_box)
+
     gp_df = set_crs(gp_df, crs)
 
     feature_group = folium.FeatureGroup(
@@ -50,9 +59,10 @@ def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, m
     return map_obj
 
 
-def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs):
+def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs, bounding_box):
     gp_df = gpd.read_file(line_path)
     gp_df = set_crs(gp_df, crs)
+    gp_df = gpd.clip(gp_df, bounding_box)
 
     feature_group = folium.FeatureGroup(
         name=line_name,
@@ -73,9 +83,10 @@ def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs):
     return map_obj
 
 
-def add_markers(feature_group_name, marker_path, icon_url, map_obj, crs):
+def add_markers(feature_group_name, marker_path, icon_url, map_obj, crs, bounding_box):
     gp_df = gpd.read_file(marker_path)
     gp_df = set_crs(gp_df, crs)
+    gp_df = gpd.clip(gp_df, mask=bounding_box)
 
     try:
         assert (file_suffix in ['shp', 'gpkg'])
@@ -203,7 +214,7 @@ def png_to_tif(tif, dest_png):
 
         # img = trim(img)
 
-        img.save(png_file)
+        img.save(dest_png)
 
         return None
 
@@ -251,13 +262,18 @@ def trim(img):
 # ---------
 # VARIABLES
 # ---------
-sw = [-25.0, 30.0]
-ne = [-8.5, 43.0]
+# n = 43.0  # lon_max
+# e = -8.5  # lat_max
+# s = 30.0  # lon_min
+# w = -25.0  #lat_min
+
+n = 35
+e = -19
+s = 34
+w = -20
 crs = 'EPSG:4326'  # This is the version that is
 
-lat_min, long_min = sw
-lat_max, long_max = ne
-center = [np.mean([lat_min, lat_max]), np.mean([long_min, long_max])]
+center = [np.mean([w, e]), np.mean([s, n])]
 
 out_dir = '../docs/'
 data_dict_file = '../data/data_dict_demo_map.csv'  # data dict file tells us which files to read in
@@ -288,20 +304,22 @@ m = folium.Map(
     location=center,
     tiles=None,
     max_bounds=True,
-    # prevent map from zooming/panning out of the bounding box:
-    min_lat=lat_min,
-    max_lat=lat_max,
-    min_lon=long_min,
-    max_lon=long_max,
+    # prevent map from panning out of the bounding box:
+    min_lat=w,
+    max_lat=e,
+    min_lon=s,
+    max_lon=n,
 )
 
+sw = [w, s]
+ne = [e, n]
 m.fit_bounds(bounds=[sw, ne])  # creates the ideal initial zoom level
 
 for map_name in base_maps.keys():
     folium.TileLayer(base_maps[map_name][0],
                      name=map_name,
                      attr=base_maps[map_name][1],
-                     min_zoom=5,
+                     min_zoom=10,   # done by trial and error currently
                      ).add_to(m)
 
 # ------------
@@ -327,6 +345,11 @@ data_dict_df = icon_colourmap(data_dict_df, out_dir, colour_col='colour')
 # LOAD IN DATA
 # ------------
 
+bounding_box_coords = [(n, w), (n, e), (s, e), (s, w)]
+# polygon = gpd.GeoSeries([Point(x[0], x[1]) for x in bounding_box_coords])
+polygon = Polygon([x[0], x[1]] for x in bounding_box_coords)
+
+
 for index, row in data_dict_df.iterrows():
     file_path = row.file_path
     file_suffix = file_path.split('.')[-1]
@@ -341,7 +364,12 @@ for index, row in data_dict_df.iterrows():
         #     continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
 
     elif row.info_type == 'marker':
-        m = add_markers(feature_group_name=index, marker_path=file_path, icon_url=row.new_icon, map_obj=m, crs=crs)
+        m = add_markers(feature_group_name=index,
+                        marker_path=file_path,
+                        icon_url=row.new_icon,
+                        map_obj=m,
+                        crs=crs,
+                        bounding_box=polygon)
 
     elif row.info_type == 'line':
         m = add_line(line_name=index,
@@ -349,7 +377,8 @@ for index, row in data_dict_df.iterrows():
                      line_colour=row.colour,
                      line_thickness=row.thickness,
                      map_obj=m,
-                     crs=crs)
+                     crs=crs,
+                     bounding_box=polygon)
 
     elif row.info_type == 'polygon':
         m = add_polygon(polygon_name=index,
@@ -357,11 +386,17 @@ for index, row in data_dict_df.iterrows():
                         outline_colour=row.colour,
                         outline_thickness=row.thickness,
                         map_obj=m,
-                        crs=crs)
+                        crs=crs,
+                        bounding_box=polygon)
     else:
         print(f"Info type detected not known: {row.info_type}")  # TODO logging
 
-folium.LayerControl().add_to(m)
+# draw bounding box:
+bounding_box_coords = [(w, n), (e, n), (e, s), (w, s)]
+bounding_box_poly = folium.vector_layers.Polygon(bounding_box_coords, color='#7a7a7a')
+m.add_child(bounding_box_poly)
+
+folium.LayerControl(collapsed=False).add_to(m)
 
 # -------
 # OUTPUT
