@@ -33,10 +33,46 @@ def set_crs(df, crs):
     return df
 
 
+def add_choropleth(feature_group_name, paths, colours, map_obj, crs, bounding_box):
+    """
+
+    :param feature_group_name:
+    :param path:
+    :param colours:
+    :param map_obj:
+    :param crs:
+    :param bounding_box:
+    :return:
+    """
+
+    feature_group = folium.FeatureGroup(feature_group_name, show=False)
+    for i, path in enumerate(paths):
+        gp_df = gpd.read_file(path)
+        # TODO: Figure out why clipping doesn't work for these created geometries. Or just maybe add an extra data_dict key.
+        try:
+            assert(str(gp_df.crs).lower() == crs.lower())
+        except AssertionError:
+            continue  # TODO: logging
+        gp_df = set_crs(gp_df, crs)
+        colour = colours[i]
+
+        for _, gp_row in gp_df.iterrows():
+            polygon_obj = gp_row.geometry
+            coords = list(zip(polygon_obj.exterior.coords.xy[1], polygon_obj.exterior.coords.xy[0]))
+            polygon = folium.vector_layers.Polygon(coords,
+                                                   fill_color=colour,
+                                                   fill_opacity=0.7,
+                                                   stroke=False)
+            feature_group.add_child(polygon)
+    map_obj.add_child(feature_group)
+
+    return map_obj
+
+
 def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, map_obj, crs, bounding_box):
+
     gp_df = gpd.read_file(polygon_path)
     gp_df = gpd.clip(gp_df, bounding_box)
-
     gp_df = set_crs(gp_df, crs)
 
     feature_group = folium.FeatureGroup(
@@ -353,7 +389,7 @@ polygon = Polygon([x[0], x[1]] for x in bounding_box_coords)
 for index, row in data_dict_df.iterrows():
     file_path = row.file_path
     file_suffix = file_path.split('.')[-1]
-    file_path = os.path.join('../', file_path)
+    relative_path_to_data = '../'
 
     if row.info_type == 'image_overlay':
         continue
@@ -363,9 +399,19 @@ for index, row in data_dict_df.iterrows():
         #     # img = display_tif(src_tif=file_path, dest_png = png_file, dest_crs=crs)
         #     continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
 
+    elif row.info_type == 'choropleth':
+        multiple_paths = file_path.split(';')
+        multiple_paths = [os.path.join(relative_path_to_data, path) for path in multiple_paths]
+        m = add_choropleth(feature_group_name=index,
+                           paths=multiple_paths,
+                           colours=row.colour.split(';'),
+                           map_obj=m,
+                           crs=crs,
+                           bounding_box=polygon)
+
     elif row.info_type == 'marker':
         m = add_markers(feature_group_name=index,
-                        marker_path=file_path,
+                        marker_path=os.path.join(relative_path_to_data, file_path),
                         icon_url=row.new_icon,
                         map_obj=m,
                         crs=crs,
@@ -373,7 +419,7 @@ for index, row in data_dict_df.iterrows():
 
     elif row.info_type == 'line':
         m = add_line(line_name=index,
-                     line_path=file_path,
+                     line_path=os.path.join(relative_path_to_data, file_path),
                      line_colour=row.colour,
                      line_thickness=row.thickness,
                      map_obj=m,
@@ -382,7 +428,7 @@ for index, row in data_dict_df.iterrows():
 
     elif row.info_type == 'polygon':
         m = add_polygon(polygon_name=index,
-                        polygon_path=file_path,
+                        polygon_path=os.path.join(relative_path_to_data, file_path),
                         outline_colour=row.colour,
                         outline_thickness=row.thickness,
                         map_obj=m,
