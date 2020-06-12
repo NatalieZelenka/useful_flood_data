@@ -319,7 +319,7 @@ for map_name in base_maps.keys():
     folium.TileLayer(base_maps[map_name][0],
                      name=map_name,
                      attr=base_maps[map_name][1],
-                     min_zoom=10,   # done by trial and error currently
+                     min_zoom=9,   # done by trial and error currently
                      ).add_to(m)
 
 # ------------
