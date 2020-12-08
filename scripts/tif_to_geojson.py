@@ -1,4 +1,7 @@
-import geopandas as gpd  # for loading/manipulating vector data
+"""
+Contains experimental code for converting from tif to geojson using rasterio: very slow, not recommended.
+"""
+
 import rasterio
 import rasterio.features
 import rasterio.warp
@@ -7,6 +10,11 @@ tif_file = '../data/flood_hazard/Mozambique_1in100yearfloodMERIT_MERITHYDRO.tif'
 crs = 'EPSG:3857'
 
 def tif_to_geojson(tif):
+    """
+    Converts tif to geojson: very slow
+    :param tif:
+    :return:
+    """
     with rasterio.open(tif) as dataset:
 
         # Read the dataset's valid data mask as a ndarray.
