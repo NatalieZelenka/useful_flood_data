@@ -25,6 +25,12 @@ warnings.filterwarnings('ignore', 'GeoSeries.notna', UserWarning)
 # ---------
 
 def set_crs(df, crs):
+    """
+
+    :param df:
+    :param crs:
+    :return:
+    """
     if type(df.crs).__name__ in ['CRS']:
         if str(df.crs).upper() != crs:
             df = df.to_crs(crs)
@@ -70,6 +76,17 @@ def add_choropleth(feature_group_name, paths, colours, map_obj, crs, bounding_bo
 
 
 def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, map_obj, crs, bounding_box):
+    """
+
+    :param polygon_name:
+    :param polygon_path:
+    :param outline_colour:
+    :param outline_thickness:
+    :param map_obj:
+    :param crs:
+    :param bounding_box:
+    :return:
+    """
 
     gp_df = gpd.read_file(polygon_path)
     gp_df = gpd.clip(gp_df, bounding_box)
@@ -96,6 +113,17 @@ def add_polygon(polygon_name, polygon_path, outline_colour, outline_thickness, m
 
 
 def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs, bounding_box):
+    """
+
+    :param line_name:
+    :param line_path:
+    :param line_colour:
+    :param line_thickness:
+    :param map_obj:
+    :param crs:
+    :param bounding_box:
+    :return:
+    """
     gp_df = gpd.read_file(line_path)
     gp_df = set_crs(gp_df, crs)
     gp_df = gpd.clip(gp_df, bounding_box)
@@ -120,6 +148,16 @@ def add_line(line_name, line_path, line_colour, line_thickness, map_obj, crs, bo
 
 
 def add_markers(feature_group_name, marker_path, icon_url, map_obj, crs, bounding_box):
+    """
+
+    :param feature_group_name:
+    :param marker_path:
+    :param icon_url:
+    :param map_obj:
+    :param crs:
+    :param bounding_box:
+    :return:
+    """
     gp_df = gpd.read_file(marker_path)
     gp_df = set_crs(gp_df, crs)
     gp_df = gpd.clip(gp_df, mask=bounding_box)
@@ -209,6 +247,11 @@ def recolour_icon(old_icon_file, new_colour_hex, out_dir, new_subdir='recoloured
 
 
 def tif_to_geojson(tif_file):
+    """
+
+    :param tif_file:
+    :return:
+    """
     with rasterio.open(tif_file) as dataset:
         # Read the dataset's valid data mask as a ndarray.
         mask = dataset.dataset_mask()
@@ -226,36 +269,48 @@ def tif_to_geojson(tif_file):
 
 
 def png_to_tif(tif, dest_png):
+    """
 
-        # tif files are crazy so they can have negative numbers and floats convert to 8 bit:
-        # TODO: add colourmap option
-        raster = tif.read()
+    :param tif:
+    :param dest_png:
+    :return:
+    """
+    # tif files are crazy so they can have negative numbers and floats convert to 8 bit:
+    # TODO: add colourmap option
+    raster = tif.read()
 
-        alpha = np.array(raster)
-        raster[raster < 0] = 0
-        raster = (255 * (raster - raster.min())) / (raster.max() - raster.min())
-        raster = raster.astype(int).squeeze()
-        shape = raster.shape
+    alpha = np.array(raster)
+    raster[raster < 0] = 0
+    raster = (255 * (raster - raster.min())) / (raster.max() - raster.min())
+    raster = raster.astype(int).squeeze()
+    shape = raster.shape
 
-        zeroes = np.zeros(shape)
+    zeroes = np.zeros(shape)
 
-        image = np.zeros([shape[0], shape[1], 4], dtype=np.uint8)
-        image[:, :, 2] = raster
-        image[:, :, 3] = raster
+    image = np.zeros([shape[0], shape[1], 4], dtype=np.uint8)
+    image[:, :, 2] = raster
+    image[:, :, 3] = raster
 
-        img = Image.fromarray(image)
-        downsize_by = 0.2  # 20%
-        new_size = [int(i * downsize_by) for i in shape]
-        img.thumbnail(new_size, Image.ANTIALIAS)
+    img = Image.fromarray(image)
+    downsize_by = 0.2  # 20%
+    new_size = [int(i * downsize_by) for i in shape]
+    img.thumbnail(new_size, Image.ANTIALIAS)
 
-        # img = trim(img)
+    # img = trim(img)
 
-        img.save(dest_png)
+    img.save(dest_png)
 
-        return None
+    return None
 
 
 def display_tif(src_tif, dest_png, dest_crs):
+    """
+
+    :param src_tif:
+    :param dest_png:
+    :param dest_crs:
+    :return:
+    """
 
     # TODO: Put into a function, where you can specify the colourmap/gradient.
     with rasterio.open(src_tif, 'r', driver='GTiff') as tif:
@@ -264,7 +319,7 @@ def display_tif(src_tif, dest_png, dest_crs):
         if not os.path.exists(dest_png):
             png_to_tif(tif, dest_png)
 
-    png_file = os.path.join(website, 'pngs', file_name.replace('.tif', '.png'))
+    png_file = os.path.join(website, 'pngs', src_tif.replace('.tif', '.png'))
     image_overlay = folium.raster_layers.ImageOverlay(
                 image=png_file,
                 name=index,
@@ -276,15 +331,9 @@ def display_tif(src_tif, dest_png, dest_crs):
                 )
     m.add_child(image_overlay)
 
-# if tif.crs != crs:  # TODO: maybe put this in?
-# shape = raster.shape
-#     dest = np.zeroes(shape)
-#     reproject(
-#         raster,
-#         dest,
-#         src_crs=tif.crs,
-#         dst_crs=crs,
-#         resampling=Resampling.nearest)
+    assert(tif.crs == dest_crs)
+    return None
+
 
 def trim(img):
     border = Image.new(img.mode, img.size, img.getpixel((0, 0)))
@@ -295,21 +344,22 @@ def trim(img):
         img = img.crop(bbox)
     return img
 
-# ---------
-# VARIABLES
-# ---------
-# n = 43.0  # lon_max
-# e = -8.5  # lat_max
-# s = 30.0  # lon_min
-# w = -25.0  #lat_min
 
-n = 35
-e = -19
-s = 34
-w = -20
-crs = 'EPSG:4326'  # This is the version that is
+class Vars:
+    """
+    Hard-coded variables
+    """
+    # bounding box:
+    n = 35  # lon_max
+    e = -19  # lat_max
+    s = 34  # lon_min
+    w = -20  #lat_min
 
-center = [np.mean([w, e]), np.mean([s, n])]
+    crs = 'EPSG:4326'  # This is the version that is
+
+
+vars_ = Vars()
+center = [np.mean([vars_.w, vars_.e]), np.mean([vars_.s, vars_.n])]
 
 out_dir = '../docs/'
 data_dict_file = '../data/data_dict_demo_map.csv'  # data dict file tells us which files to read in
@@ -341,14 +391,14 @@ m = folium.Map(
     tiles=None,
     max_bounds=True,
     # prevent map from panning out of the bounding box:
-    min_lat=w,
-    max_lat=e,
-    min_lon=s,
-    max_lon=n,
+    min_lat=vars_.w,
+    max_lat=vars_.e,
+    min_lon=vars_.s,
+    max_lon=vars_.n,
 )
 
-sw = [w, s]
-ne = [e, n]
+sw = [vars_.w, vars_.s]
+ne = [vars_.e, vars_.n]
 m.fit_bounds(bounds=[sw, ne])  # creates the ideal initial zoom level
 
 for map_name in base_maps.keys():
@@ -370,18 +420,11 @@ data_dict_df = data_dict_df[data_dict_df.index.notnull()]
 data_dict_df = icon_colourmap(data_dict_df, out_dir, colour_col='colour')
 
 
-# TODO: Try using ipywidgets to change marker colours with those in colour col being default.
-# marker_colours = {
-#     'Airports': '#34b1eb',
-# }
-# data_dict_df['marker_colour'] = data_dict_df.index.map(marker_colours)
-
-
 # ------------
 # LOAD IN DATA
 # ------------
 
-bounding_box_coords = [(n, w), (n, e), (s, e), (s, w)]
+bounding_box_coords = [(vars_.n, vars_.w), (vars_.n, vars_.e), (vars_.s, vars_.e), (vars_.s, vars_.w)]
 # polygon = gpd.GeoSeries([Point(x[0], x[1]) for x in bounding_box_coords])
 polygon = Polygon([x[0], x[1]] for x in bounding_box_coords)
 
@@ -406,7 +449,7 @@ for index, row in data_dict_df.iterrows():
                            paths=multiple_paths,
                            colours=row.colour.split(';'),
                            map_obj=m,
-                           crs=crs,
+                           crs=vars_.crs,
                            bounding_box=polygon)
 
     elif row.info_type == 'marker':
@@ -414,7 +457,7 @@ for index, row in data_dict_df.iterrows():
                         marker_path=os.path.join(relative_path_to_data, file_path),
                         icon_url=row.new_icon,
                         map_obj=m,
-                        crs=crs,
+                        crs=vars_.crs,
                         bounding_box=polygon)
 
     elif row.info_type == 'line':
@@ -423,7 +466,7 @@ for index, row in data_dict_df.iterrows():
                      line_colour=row.colour,
                      line_thickness=row.thickness,
                      map_obj=m,
-                     crs=crs,
+                     crs=vars_.crs,
                      bounding_box=polygon)
 
     elif row.info_type == 'polygon':
@@ -432,13 +475,13 @@ for index, row in data_dict_df.iterrows():
                         outline_colour=row.colour,
                         outline_thickness=row.thickness,
                         map_obj=m,
-                        crs=crs,
+                        crs=vars_.crs,
                         bounding_box=polygon)
     else:
         print(f"Info type detected not known: {row.info_type}")  # TODO logging
 
 # draw bounding box:
-bounding_box_coords = [(w, n), (e, n), (e, s), (w, s)]
+bounding_box_coords = [(vars_.w, vars_.n), (vars_.e, vars_.n), (vars_.e, vars_.s), (vars_.w, vars_.s)]
 bounding_box_poly = folium.vector_layers.Polygon(bounding_box_coords, color='#7a7a7a')
 m.add_child(bounding_box_poly)
 
