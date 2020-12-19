@@ -6,7 +6,6 @@ from shapely.geometry import Point
 from shapely.geometry import Polygon
 import rasterio  # for loading/manipulating raster data
 
-
 import folium  # for creating the interactive map
 
 import numpy as np
@@ -17,6 +16,7 @@ import os
 from PIL import Image, ImageChops
 
 import warnings
+import logging
 
 warnings.filterwarnings('ignore', 'GeoSeries.notna', UserWarning)
 
@@ -196,8 +196,9 @@ def add_markers(feature_group_name, marker_path, icon_url, map_obj, crs, boundin
 
 def icon_colourmap(data_dict, out_dir, colour_col='marker_colour'):
     """
-
+    Recolour icons and add the recoloured icon files to the data dict
     :param data_dict:
+    :param out_dir: output directory
     :param colour_col:
     :return:
     """
@@ -344,145 +345,160 @@ def trim(img):
         img = img.crop(bbox)
     return img
 
-
-class Vars:
+class MapVars:
     """
-    Hard-coded variables
+    Hard-coded variables relating to the map
     """
     # bounding box:
-    n = 35  # lon_max
-    e = -19  # lat_max
-    s = 34  # lon_min
-    w = -20  #lat_min
+    north = 35  # lon_max
+    east = -19  # lat_max
+    south = 34  # lon_min
+    west = -20  # lat_min
 
-    crs = 'EPSG:4326'  # This is the version that is
+    center = [np.mean([west, east]), np.mean([south, north])]
+    bounding_box = [
+        (north, west),
+        (north, east),
+        (south, east),
+        (south, west),
+    ]
 
+    crs = 'EPSG:4326'  # Coordinate Reference System
 
-vars_ = Vars()
-center = [np.mean([vars_.w, vars_.e]), np.mean([vars_.s, vars_.n])]
-
-out_dir = '../docs/'
-data_dict_file = '../data/data_dict_demo_map.csv'  # data dict file tells us which files to read in
-website = 'https://nataliethurlby.github.io/useful_flood_data/'
-
-# --------
-# BASEMAPS
-# --------
-
-base_maps = {
-    'OSM Humanitarian':
-        ('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-         '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>).'),
-    'OSM Standard':
-        ('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 'Data by &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'),
-    'ESRI Satellite':
-        ('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 'ESRI'),  # TODO: add attributions for basemaps
-    'ESRI World Topo':
-        ('https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', 'ESRI'),  # TODO: add attributions for basemaps
-}
-default_base_map = base_maps['OSM Humanitarian']
-
-# ----------
-# MAP SETUP
-# ---------
-
-m = folium.Map(
-    location=center,
-    tiles=None,
-    max_bounds=True,
-    # prevent map from panning out of the bounding box:
-    min_lat=vars_.w,
-    max_lat=vars_.e,
-    min_lon=vars_.s,
-    max_lon=vars_.n,
-)
-
-sw = [vars_.w, vars_.s]
-ne = [vars_.e, vars_.n]
-m.fit_bounds(bounds=[sw, ne])  # creates the ideal initial zoom level
-
-for map_name in base_maps.keys():
-    folium.TileLayer(base_maps[map_name][0],
-                     name=map_name,
-                     attr=base_maps[map_name][1],
-                     min_zoom=9,   # done by trial and error currently
-                     ).add_to(m)
-
-# ------------
-# ICON COLOURS
-# ------------
-data_dict_df = pd.read_csv(data_dict_file,
-                           header=0,  # Row index 0 is the header row.
-                           skiprows=[1],  # Row index 1 is the example row.
-                           index_col='data_name',
-                           skip_blank_lines=True)
-data_dict_df = data_dict_df[data_dict_df.index.notnull()]
-data_dict_df = icon_colourmap(data_dict_df, out_dir, colour_col='colour')
+    base_maps = {
+        'OSM Humanitarian':
+            ('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+             '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, '
+             'Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> '
+             'hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>).'),
+        'OSM Standard':
+            ('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+             'Data by &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, '
+             'under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'),
+        'ESRI Satellite':
+            ('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 'ESRI'),
+        # TODO: add attributions for basemaps
+        'ESRI World Topo':
+            (
+            'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', 'ESRI'),
+        # TODO: add attributions for basemaps
+    }
 
 
-# ------------
-# LOAD IN DATA
-# ------------
+def map_setup():
+    """
+    Sets up the map object
+    :return: m - map object
+    """
+    m = folium.Map(
+        location=center,
+        tiles=None,
+        max_bounds=True,
+        # prevent map from panning out of the bounding box:
+        min_lat=MapVars.west,
+        max_lat=MapVars.east,
+        min_lon=MapVars.south,
+        max_lon=MapVars.north,
+    )
 
-bounding_box_coords = [(vars_.n, vars_.w), (vars_.n, vars_.e), (vars_.s, vars_.e), (vars_.s, vars_.w)]
-# polygon = gpd.GeoSeries([Point(x[0], x[1]) for x in bounding_box_coords])
-polygon = Polygon([x[0], x[1]] for x in bounding_box_coords)
+    # sets the ideal initial zoom level:
+    sw = [MapVars.west, MapVars.south]
+    ne = [MapVars.east, MapVars.north]
+    m.fit_bounds(bounds=[sw, ne])
+
+    # Add base map options:
+    for map_name in map_vars.base_maps.keys():
+        folium.TileLayer(map_vars.base_maps[map_name][0],
+                         name=map_name,
+                         attr=map_vars.base_maps[map_name][1],
+                         min_zoom=9,  # done by trial and error currently
+                         ).add_to(m)
+
+    return m
 
 
-for index, row in data_dict_df.iterrows():
-    file_path = row.file_path
-    file_suffix = file_path.split('.')[-1]
-    relative_path_to_data = '../'
 
-    if row.info_type == 'image_overlay':
-        continue
-        # if file_suffix == 'tif':
-        #     file_name = os.path.basename(file_path)
-        #     png_file = os.path.join(out_dir, 'pngs', file_name.replace('.tif', '.png'))
-        #     # img = display_tif(src_tif=file_path, dest_png = png_file, dest_crs=crs)
-        #     continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
+# default_base_map = MapVars.base_maps['OSM Humanitarian'] # TODO: delete
 
-    elif row.info_type == 'choropleth':
-        multiple_paths = file_path.split(';')
-        multiple_paths = [os.path.join(relative_path_to_data, path) for path in multiple_paths]
-        m = add_choropleth(feature_group_name=index,
-                           paths=multiple_paths,
-                           colours=row.colour.split(';'),
-                           map_obj=m,
-                           crs=vars_.crs,
-                           bounding_box=polygon)
+if __name__ == '__main__':
+    out_dir = '../docs/'
+    data_dict_file = '../data/data_dict_demo_map.csv'  # data dict file tells us which files to read in
+    website = 'https://nataliethurlby.github.io/useful_flood_data/'
 
-    elif row.info_type == 'marker':
-        m = add_markers(feature_group_name=index,
-                        marker_path=os.path.join(relative_path_to_data, file_path),
-                        icon_url=row.new_icon,
-                        map_obj=m,
-                        crs=vars_.crs,
-                        bounding_box=polygon)
+    m = map_setup(MapVars)
 
-    elif row.info_type == 'line':
-        m = add_line(line_name=index,
-                     line_path=os.path.join(relative_path_to_data, file_path),
-                     line_colour=row.colour,
-                     line_thickness=row.thickness,
-                     map_obj=m,
-                     crs=vars_.crs,
-                     bounding_box=polygon)
+    # load data dict:
+    data_dict_df = pd.read_csv(data_dict_file,
+                               header=0,  # Row index 0 is the header row.
+                               skiprows=[1],  # Row index 1 is the example row.
+                               index_col='data_name',
+                               skip_blank_lines=True)
+    data_dict_df = data_dict_df[data_dict_df.index.notnull()]
 
-    elif row.info_type == 'polygon':
-        m = add_polygon(polygon_name=index,
-                        polygon_path=os.path.join(relative_path_to_data, file_path),
-                        outline_colour=row.colour,
-                        outline_thickness=row.thickness,
-                        map_obj=m,
-                        crs=vars_.crs,
-                        bounding_box=polygon)
-    else:
-        print(f"Info type detected not known: {row.info_type}")  # TODO logging
+    data_dict_df = icon_colourmap(data_dict_df, out_dir, colour_col='colour')  # icon colours:
+
+
+def load_map_data(data_dict_df):
+
+    polygon = Polygon([x[0], x[1]] for x in MapVars.bounding_box)
+    for index, row in data_dict_df.iterrows():
+        file_path = row.file_path
+        file_suffix = file_path.split('.')[-1]
+        relative_path_to_data = '../'
+
+        if row.info_type == 'image_overlay':
+            continue
+            # if file_suffix == 'tif':
+            #     file_name = os.path.basename(file_path)
+            #     png_file = os.path.join(out_dir, 'pngs', file_name.replace('.tif', '.png'))
+            #     # img = display_tif(src_tif=file_path, dest_png = png_file, dest_crs=crs)
+            #     continue  # TODO: Hopefully convert to geojson/geopackage because the pixels look bad.
+
+        elif row.info_type == 'choropleth':
+            multiple_paths = file_path.split(';')
+            multiple_paths = [os.path.join(relative_path_to_data, path) for path in multiple_paths]
+            m = add_choropleth(feature_group_name=index,
+                               paths=multiple_paths,
+                               colours=row.colour.split(';'),
+                               map_obj=m,
+                               crs=map_vars.crs,
+                               bounding_box=polygon)
+
+        elif row.info_type == 'marker':
+            m = add_markers(feature_group_name=index,
+                            marker_path=os.path.join(relative_path_to_data, file_path),
+                            icon_url=row.new_icon,
+                            map_obj=m,
+                            crs=map_vars.crs,
+                            bounding_box=polygon)
+
+        elif row.info_type == 'line':
+            m = add_line(line_name=index,
+                         line_path=os.path.join(relative_path_to_data, file_path),
+                         line_colour=row.colour,
+                         line_thickness=row.thickness,
+                         map_obj=m,
+                         crs=map_vars.crs,
+                         bounding_box=polygon)
+
+        elif row.info_type == 'polygon':
+            m = add_polygon(polygon_name=index,
+                            polygon_path=os.path.join(relative_path_to_data, file_path),
+                            outline_colour=row.colour,
+                            outline_thickness=row.thickness,
+                            map_obj=m,
+                            crs=map_vars.crs,
+                            bounding_box=polygon)
+        else:
+            print(f"Info type detected not known: {row.info_type}")  # TODO logging
 
 # draw bounding box:
-bounding_box_coords = [(vars_.w, vars_.n), (vars_.e, vars_.n), (vars_.e, vars_.s), (vars_.w, vars_.s)]
-bounding_box_poly = folium.vector_layers.Polygon(bounding_box_coords, color='#7a7a7a')
+# TODO: delete if bounding bo polygon doesn't need this:
+# bounding_box_coords = [(MapVars.west, MapVars.north),
+#                        (MapVars.east, MapVars.north),
+#                        (MapVars.east, MapVars.south),
+#                        (MapVars.west, MapVars.south)]
+bounding_box_poly = folium.vector_layers.Polygon(MapVars.bounding_box, color='#7a7a7a')
 m.add_child(bounding_box_poly)
 
 folium.LayerControl(collapsed=False).add_to(m)
