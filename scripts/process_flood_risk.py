@@ -1,8 +1,10 @@
+"""
+Run this once to pre-processes flood risk data to store each risk level (1-5) as different file,
+so each can be a different layer.
+"""
+
 import geopandas as gpd
 import os
-
-
-# '#81c803;#fcf803;#fc9403;#fc6703;fc0303'  # 5,4,3,2,1
 
 dir_path = '../data/flood_hazard/flood_risk/'
 file_path = os.path.join(dir_path, 'Mozambique_1in100yearfloodMERIT_MERITHYDRO_georef_clipped_reclassified.gpkg')
