@@ -9,9 +9,10 @@ import rasterio.warp
 tif_file = '../data/flood_hazard/Mozambique_1in100yearfloodMERIT_MERITHYDRO.tif'
 crs = 'EPSG:3857'
 
+
 def tif_to_geojson(tif):
     """
-    Converts tif to geojson: very slow
+    Converts tif to geojson: very slo
     :param tif:
     :return:
     """
@@ -32,4 +33,3 @@ def tif_to_geojson(tif):
             # Print GeoJSON shapes to stdout.
             print(geom)
 
-tif_to_geojson(tif_file)

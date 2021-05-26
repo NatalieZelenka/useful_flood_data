@@ -1,5 +1,6 @@
 """
-Pre-processes flood risk data to store it as different data sets for different layers.
+Run this once to pre-processes flood risk data to store each risk level (1-5) as different file,
+so each can be a different layer.
 """
 
 import geopandas as gpd
