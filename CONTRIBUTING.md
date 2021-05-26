@@ -17,33 +17,57 @@ After generating this html, we "host" it (i.e. make it available on the internet
 
 ### Directory structure
 
-The directory structure needed to run the script (including files not tracked by git, i.e. large data files), is as follows:
-.
-├── [`.gitignore`](.gitignore) - tells git what not to track.
-├── [`README.md`](README.md) - project info.
-├── `CONTRIBUTING.md` - (you are here!) instructions for humans about how to run and edit this code.
-├── [`LICENSE.md`](LICENSE.md) - software license.
-├── _ `scripts/` 
-│   ├── `process_flood_risk.py` - Was used to pre-process flood risk data (save risk levels as separate files).
-│   ├── `create_map.py` - __Run this to create map html.__
-│   └── `tif_to_geojson.py` - Experimental: not recommended (very slow).
-├── _`data/`
-│   ├── `data_control.csv` - __Tells `create_map.py` what data to use__: other data is untracked by git (too big).
-│   ├── _ `flood_hazard/` - flood hazard information (geopackage and tif files)
-│   │   ├── `flood_binary/` 
-│   │   ├── `flood_depth/`
-│   │   └── `flood_risk/`
-│   └── _`humanitarian/` - locations of humanitarian resources (shapefiles)
-│       ├── `airports/`
-│       ├── `city/`
-│       ├── `airports/`
-│       └── etc 
-├── _ `docs/` - Contains anything to display on website
-│   ├── `index.html` - generated map html
-│   └── `pngs/` - converted from tif files
-│   └── `icons/` - humanitarian icons .svg files
-└── `images/` - misc images (e.g. project image)
+The directory structure needed to run the script (including files not tracked by git, i.e. large data files) is as follows:
 
+```
+.
+├── .gitignore 
+├── README.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── scripts/ 
+│   ├── process_flood_risk.py
+│   ├── create_map.py 
+│   └── tif_to_geojson.py
+├── data/ 
+│   ├── data_control.csv
+│   ├── flood_hazard/
+│   │  ├── flood_binary/
+│   │  ├── flood_depth/
+│   │  └── flood_risk/
+│   └── humanitarian/ 
+│       ├── airports/
+│       ├── city/
+│       ├── airports/
+│       └── (etcetera)
+├── docs/ 
+│   ├── index.html
+│   └── pngs/
+│   └── icons/
+└── images/
+```
+
+The data directory mimics the directory structure from the source data, so it is more nested that necessary for the amount of data we are using.
+
+The following table describes the function of some of these folders within the project:
+
+| file/folder name | use |
+| --- | --- |
+| [`.gitignore`](.gitignore) | tells git what not to track. |
+| `scripts/process_flood_risk.py` | was used to pre-process flood risk data (save risk levels as separate files). |
+| `scripts/create_map.py` | __Run this to create map html.__ |
+| `scripts/tif_to_geojson.py` | experimental: not recommended (very slow). |
+| `data/data_control.csv` | __tells `create_map.py` what data to use__ | 
+| `data/flood_hazard/` | flood hazard information (geopackage and tif files), untracked by git (too big) | 
+| `data/humanitarian/` | geo-locations of humanitarian resources (shapefiles), untracked by git (too big) |
+| `docs/` | contains anything to display on website |
+| `docs/index.html` |  generated map html | 
+| `docs/pngs/` |  contains image files (converted from tifs) | 
+| `docs/icons/` |  humanitarian icon .svg files | 
+| `images/` | misc images (e.g. project image) |
+| [`README.md`](README.md) | project info. |
+| `CONTRIBUTING.md` | (you are here!) instructions for humans about how to run and edit this code. |
+| [`LICENSE.md`](LICENSE.md) | software license. |
 
 ### Data control file structure
 
@@ -98,7 +122,7 @@ open docs/index.html
 Only after you are happy with the created map, it's time to upload it to GitHub pages so that other people can see the version that you have created. 
 
 Everything that is in the `docs` folder of the main branch will be live on the site. 
-Submit a Pull Request to the repository, and it will be merged.
+Submit a Pull Request to the repository from your fork of the project to the main branch. 
 Images that are shown on the map must be included in the `docs` folder (such as icons or pngs). 
 Otherwise the website will not be able to find them.
 
